@@ -201,3 +201,39 @@ i) freshness triad (fresh, stale, indeterminate) and static-never-
 j) as-of prefix and state-hash queries (8.6 c).
 
 Negative test material is specified in Annex A.
+
+=== Jurisdictional registry operator conformance class
+
+An implementation claiming conformance to the jurisdictional registry
+operator class SHALL satisfy all requirements of the core class and in
+addition:
+
+* **Governance.** The registry SHALL operate under ISO 19135 register
+ governance (register owner, manager, submitting organization, control
+ body roles) and SHALL record the governance metadata in its discovery
+ descriptor.
+
+* **Signed descriptors.** All service descriptors, item registrations,
+ and applicability bindings SHALL be signed by the registry's operator
+ key, verifiable via the jurisdiction's trust list.
+
+* **Enumeration resistance.** The registry SHALL NOT provide any
+ endpoint that lists, enumerates, or permits traversal of
+ identifiers-in-use without a predicate-scoped, role-qualified query.
+ Discovery SHALL be by-identity (pull).
+
+* **Mirroring and availability.** The registry's immutable-per-version
+ items SHALL be mirrorable by any conforming peer, with log-anchored
+ inclusion proofs substituting for direct reachability.
+
+* **As-of semantics.** All read endpoints SHALL support point-in-time
+ queries with explicit as-of stamps; responses SHALL be immutable for
+ a given (identifier, as-of) pair.
+
+* **Continuity filing.** The registry SHALL maintain a current
+ succession plan, escrow arrangement, and continuity marking, up to
+ date at all times.
+
+* **Federation protocol.** The registry SHALL implement cross-registry
+ resolution (delegation records, cross-registry as-of, identity-conflict
+ detection) per the framework's registry-federation clause.
