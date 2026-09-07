@@ -1,0 +1,75 @@
+= UniDPP — Digital Product Passport framework
+:docnumber: 1
+:doctype: international-standard
+:docstage: 20
+:docsubstage: 00
+:language: en
+:edition: 1
+:publisher: UniDPP
+:technical-committee: UniDPP framework
+:technical-committee-type: A
+:license: CC-BY-4.0
+:no-isobib:
+
+== Introduction
+
+This document specifies the UniDPP framework for digital product
+passports: a neutral, jurisdiction-agnostic core model on which regional,
+sectoral and characteristic requirements operate as independently
+governed profiles. The framework is a projection architecture — the
+passport is a deterministic, registered and legally cited view of an
+event-sourced testimonial record (the governed digital twin), and the
+profile is a calibrated lens placed on that record.
+
+[NOTE]
+====
+Provenance. The authoritative content source of this document is the
+UniDPP standards-strategy plan (`PLAN.md`, 2026-09), which defines the
+design invariants, the seam register, the lens model, the profile
+architecture, the relationship algebra, the event taxonomy, the
+transformation algebra, the capability classes, the twin axis, the
+visibility and enumeration-resistance rules, the operating model and the
+resilience doctrine normatively restated here. The implementation ground
+truth is the UniDPP reference core, the Rust workspace `unidpp-core`;
+throughout this document, references to modules of that workspace (for
+example `crates/model/src/link.rs`) are informative implementation
+references, not normative dependencies.
+
+Licence. This document is made available under the Creative Commons
+Attribution 4.0 International licence (CC-BY-4.0). The document stage is
+Working draft (ISO stage 20).
+====
+
+The document is organized as follows. Clause 5 states the framework
+invariants. Clause 6 specifies the profile mechanism. Clause 7 specifies
+identity, granularity and the relationship algebra. Clause 8 specifies
+the event and lifecycle model. Clause 9 specifies the transformation
+algebra. Clause 10 specifies the payload tiers and offline operation.
+Clause 11 specifies trust and verification. Clause 12 defines the
+conformance classes. Annex A lists negative conformance fixtures.
+
+include::sections/01-scope.adoc[]
+
+include::sections/02-normrefs.adoc[]
+
+include::sections/03-terms.adoc[]
+
+include::sections/04-framework.adoc[]
+
+include::sections/05-profiles.adoc[]
+
+include::sections/06-identity-and-links.adoc[]
+
+include::sections/07-events.adoc[]
+
+include::sections/08-transforms.adoc[]
+
+include::sections/09-tiers.adoc[]
+
+include::sections/10-trust.adoc[]
+
+include::sections/11-conformance.adoc[]
+
+include::sections/annex-a-negative-fixtures.adoc[]
+
+include::sections/99-bibliography.adoc[]
