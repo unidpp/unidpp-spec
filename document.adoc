@@ -24,7 +24,7 @@ profile is a calibrated lens placed on that record.
 [NOTE]
 ====
 Provenance. The authoritative content source of this document is the
-UniDPP standards-strategy plan (`PLAN.md`, 2026-09), which defines the
+UniDPP standards-strategy plan (the UniDPP design framework, 2026-09), which defines the
 design invariants, the seam register, the lens model, the profile
 architecture, the relationship algebra, the event taxonomy, the
 transformation algebra, the capability classes, the twin axis, the
