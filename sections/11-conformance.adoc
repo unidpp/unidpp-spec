@@ -237,3 +237,22 @@ addition:
 * **Federation protocol.** The registry SHALL implement cross-registry
  resolution (delegation records, cross-registry as-of, identity-conflict
  detection) per the framework's registry-federation clause.
+
+=== Operator deployment conformance class
+
+An implementation claiming conformance to the *operator deployment*
+class SHALL satisfy all requirements of the core class and, in
+addition, the operations and durability requirements of
+<<cl-operations>>:
+
+* **Deployment as data** — state by journal replay, configuration
+  externalized (<<cl-ops-data>>);
+* **Backup integrity** — per-member integrity values and a
+  consistency point (<<cl-ops-backup>>);
+* **Restore safety** — verify-before-unpack, explicit-overwrite-only
+  with preservation, no tenant collision (<<cl-ops-restore>>);
+* **Append-only continuity** — the upgrade prefix property,
+  demonstrable by rehearsal (<<cl-ops-append-only>>);
+* **Proven restore** — recorded restore rehearsals (<<cl-ops-drill>>);
+* **Transfer artifacts** — integrity-verified bundles without
+  embedded secrets (<<cl-ops-bundle>>).

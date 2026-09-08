@@ -70,6 +70,8 @@ include::sections/10-trust.adoc[]
 
 include::sections/11-conformance.adoc[]
 
+include::sections/12-operations.adoc[]
+
 include::sections/annex-a-negative-fixtures.adoc[]
 
 include::sections/99-bibliography.adoc[]

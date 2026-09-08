@@ -1,0 +1,72 @@
+[[cl-operations]]
+== Operations and durability
+
+The framework's guarantees survive contact with operations or they do
+not exist. This clause states the operational invariants as normative
+requirements; each is demonstrated by the reference operator tooling
+(`unidpp-ops` and the pilot deployment, see the bibliography's
+implementation references).
+
+[[cl-ops-data]]
+=== The deployment as data
+
+A deployment comprises its configuration (the operator manifest), its
+services' journals, and its seed assets. Services SHALL reconstruct
+their state by journal replay on start; no service SHALL hold
+authoritative state that is not journaled. Configuration SHALL be
+externalized data — a deployment's identity, services, and policies
+SHALL be expressible without code changes (the whitelabel and
+sovereign profiles are configuration, not forks).
+
+[[cl-ops-backup]]
+=== Backup integrity
+
+A backup of a deployment SHALL carry, for every member it contains,
+an integrity value (SHA-256) in an accompanying manifest, together
+with the UTC moment of the snapshot and a consistency point: the
+transparency log's signed tree head at snapshot time, delimiting what
+a restore replays up to.
+
+[[cl-ops-restore]]
+=== Restore safety
+
+A restore SHALL verify every member's integrity value before
+unpacking any file. A restore SHALL refuse to overwrite an existing
+deployment unless explicitly instructed; when instructed, it SHALL
+preserve the replaced state (set aside, never destroyed). Member
+paths belonging to the backed-up deployment's own tenant SHALL be
+rewritten into the restored deployment; members belonging to other
+tenants SHALL be restored as archive material under their original
+identities (a restore SHALL NOT collapse distinct tenants onto shared
+paths).
+
+[[cl-ops-append-only]]
+=== Append-only continuity
+
+Service journals are append-only across the service lifecycle: a
+service upgrade or restart SHALL NOT rewrite, reorder, or truncate
+any journal. The journals captured by a pre-upgrade backup SHALL be
+byte-prefixes of the corresponding post-upgrade journals. An operator
+SHALL be able to demonstrate this property by rehearsal: record the
+domain state, rebuild and restart the services under the new
+binaries, and show the readings equal and the prefix property holds.
+
+[[cl-ops-drill]]
+=== Proven restore
+
+A backup that has never been restored is a claim, not a capability.
+An operator deployment SHALL demonstrate its restore path by
+rehearsal — backup, restore into an isolated rehearsal target owned
+by the rehearsal itself, verify checksums, confirm restored members
+byte-identical, and validate the restored configuration — and SHALL
+record the rehearsal's outcome as an artifact. The rehearsal SHALL
+NOT touch production state.
+
+[[cl-ops-bundle]]
+=== Transfer artifacts
+
+Where a deployment is transferred to another host (on-premise or
+sovereign operation), the transfer artifact SHALL carry per-member
+integrity metadata verifiable independently of its producer, and
+SHALL NOT embed secret material: secrets travel as environment
+references, resolved at the receiving deployment.
