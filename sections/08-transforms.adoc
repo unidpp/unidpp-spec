@@ -31,8 +31,10 @@ transparency-log inclusion proofs.
 
 [NOTE]
 ====
-Informative implementation reference:
-`crates/transform/src/provenance.rs` (`ProvenanceGraph`).
+Informative implementation references:
+`crates/transform/src/provenance.rs` (`ProvenanceGraph`) and
+`crates/transform/src/rollup.rs` (`TraversalSet`, `RollupAttestation`,
+`verify_rollup`).
 ====
 
 [[cl-transform-split]]
