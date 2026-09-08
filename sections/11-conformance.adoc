@@ -202,6 +202,14 @@ j) as-of prefix and state-hash queries (8.6 c).
 
 Negative test material is specified in Annex A.
 
+For the *operator deployment* class, the test material is the
+operational record itself: the backup sidecar with its per-member
+integrity values and consistency point, the drill report (restored
+members byte-identical, restored configuration validated), and the
+upgrade-rehearsal report (domain readings equal, journals
+byte-prefix compatible) — the artifacts <<cl-operations>> requires
+operators to produce and keep.
+
 === Jurisdictional registry operator conformance class
 
 An implementation claiming conformance to the jurisdictional registry
