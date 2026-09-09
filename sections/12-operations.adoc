@@ -75,3 +75,29 @@ sovereign operation), the transfer artifact SHALL carry per-member
 integrity metadata verifiable independently of its producer, and
 SHALL NOT embed secret material: secrets travel as environment
 references, resolved at the receiving deployment.
+
+[[cl-ops-grid]]
+=== The segment grid
+
+Where the preceding clauses govern the OPERATOR's deployment, the
+grid governs the SUBJECT's data: a device DPP is one layered stack
+crossed with parallel, policy-defined sovereignty segments.
+
+A **segment** is a custodian's partition of the record; its wire
+form carries a sealed state commitment and the governing policy
+reference — never plaintext (a segment type that cannot hold facts
+is the SG-7 log discipline at the subject level). A **policy
+object** is the segment's constitution — authority, roles, reveal
+class (open, pairing-gated, origin-sealed, escrowed), suites,
+window, version — signed by the segment authority; verification
+resolves the key through the trust graph node declared as the
+authority, and a valid signature from any other key does not
+constitute the policy. Superseded and drifted policy versions SHALL
+be detected at verification (graded, never silent).
+
+The **commitment spine** is one root over every segment's state
+commitment. It SHALL prove existence, currency and append-only
+growth of each segment without opening any: an inclusion proof for
+segment k contains only hashes pertaining to segment k, and verifying
+it requires nothing from any other segment. Rewinds and rewrites
+SHALL NOT be provable as growth.
