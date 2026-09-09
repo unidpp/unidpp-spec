@@ -40,6 +40,11 @@ tenants SHALL be restored as archive material under their original
 identities (a restore SHALL NOT collapse distinct tenants onto shared
 paths).
 
+Recovery to the deployment's original shape (disaster recovery)
+SHALL follow the same rules: verified before unpacking, the replaced
+state set aside and never destroyed, and every member restored at
+its original path — no rewriting of any kind.
+
 [[cl-ops-append-only]]
 === Append-only continuity
 
