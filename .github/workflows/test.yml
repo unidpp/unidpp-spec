@@ -16,7 +16,7 @@ jobs:
         run: |
           set -eu
           docker run --rm -v "$PWD:/metanorma" -w /metanorma \
-            metanorma/metanorma:latest metanorma -t iso document.adoc
+            metanorma/metanorma:latest metanorma -t iso --agree-to-terms document.adoc
           test -s document.html
           echo "compiled: $(grep -c '<section' document.html) sections"
 
@@ -36,7 +36,7 @@ jobs:
         run: |
           set -eu
           docker run --rm -v "$PWD:/metanorma" -w /metanorma \
-            metanorma/metanorma:latest metanorma -t iso document.adoc
+            metanorma/metanorma:latest metanorma -t iso --agree-to-terms document.adoc
           mkdir -p site
           cp document.html site/index.html
       - uses: actions/configure-pages@v5
