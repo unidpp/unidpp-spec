@@ -1,0 +1,47 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile the specification (a broken clause fails the build)
+        run: |
+          set -eu
+          docker run --rm -v "$PWD:/metanorma" -w /metanorma \
+            metanorma/metanorma:latest metanorma -t iso document.adoc
+          test -s document.html
+          echo "compiled: $(grep -c '<section' document.html) sections"
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: compile
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile for publication
+        run: |
+          set -eu
+          docker run --rm -v "$PWD:/metanorma" -w /metanorma \
+            metanorma/metanorma:latest metanorma -t iso document.adoc
+          mkdir -p site
+          cp document.html site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

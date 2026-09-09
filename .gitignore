@@ -1,0 +1,15 @@
+document.html
+document.alt.html
+document.err.html
+document.xml
+document.presentation.xml
+document.rxl
+document.doc
+document.pdf
+document.pdf.err
+document.sts.xml
+document.iso.sts.xml
+document.asciidoc.log.txt
+metanorma.err.html
+site/
+target/
