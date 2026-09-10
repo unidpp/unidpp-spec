@@ -123,6 +123,15 @@ accept such an attestation under its own anchors, and the resulting
 verdict SHALL grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
 
+The **coverage report** is a first-class object: per data class, the
+element set reference, the evidence kind (verified-direct /
+attested / explicitly-unavailable), the governing policy identifier
+and version, the reading, and the freshness. Direct and substituted
+verification runs SHALL render their reports through the same
+pipeline, and every report SHALL name the governing policies of the
+classes it covers. Unavailability SHALL be stated as an entry, never
+left silent.
+
 Acceptance is the RECEIVING profile's decision, never automatic: the
 verifier's profile declares the attestation services it anchors, the
 claim classes it accepts, the quorum strength it demands, the
