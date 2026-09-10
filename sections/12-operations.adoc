@@ -127,6 +127,18 @@ accept such an attestation under its own anchors, and the resulting
 verdict shall grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
 
+Assurance flows travel by three transport modes, chosen per pair:
+connected protocol (the S13 exchange), document exchange (frozen
+views and dossiers), and hub relay. Willingness is a precondition —
+no transport mode may bypass a policy refusal. Each delivery shall
+consult the publisher's interop declaration; a refusal, and the
+absence of a declaration, surface as a stated coverage gap or an
+escalation, never as silent delivery. A hub is a stateless signed
+relay between willing pairs divided by protocols: it checks each
+side's declaration before relaying, attests what it forwarded
+(digest, endpoints, data class) under its own signature, and retains
+nothing.
+
 Every cross-border assurance flow shall work from exchanged signed
 objects alone: the custodian can hand the verifier a **dossier** —
 the signed policies, the signed spine with inclusion proofs, the
