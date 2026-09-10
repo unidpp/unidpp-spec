@@ -74,6 +74,8 @@ include::sections/12-operations.adoc[]
 
 include::sections/13-projections.adoc[]
 
+include::sections/14-retrieval.adoc[]
+
 include::sections/annex-a-negative-fixtures.adoc[]
 
 include::sections/annex-b-canonical-encoding.adoc[]
