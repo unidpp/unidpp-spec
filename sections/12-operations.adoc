@@ -100,7 +100,11 @@ commitment. It SHALL prove existence, currency and append-only
 growth of each segment without opening any: an inclusion proof for
 segment k contains only hashes pertaining to segment k, and verifying
 it requires nothing from any other segment. Rewinds and rewrites
-SHALL NOT be provable as growth.
+SHALL NOT be provable as growth. A spine SHALL anchor in the
+transparency log — one anchoring chain, not two: the spine's digest
+appears as a log commitment, servable as a receipt (inclusion proof
++ signed tree head) that verifies offline and rides the dossier; a
+spine never anchored yields no receipt, stated.
 
 [[cl-s13]]
 === The cross-border seam (S13)
