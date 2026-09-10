@@ -4,7 +4,7 @@
 [[cl-projections-calculus]]
 === The projection calculus
 
-Every published projection SHALL carry its five-axis descriptor,
+Every published projection shall carry its five-axis descriptor,
 machine-readable: temporal (point-in-time · continuous), content
 class (static · dynamic · mixed), derivation (direct · derived),
 exchange encoding (native · translated), granularity (type ·
@@ -16,18 +16,18 @@ Two requirements follow from the calculus:
 
 * *Replayability*: event sourcing implies that every point-in-time
   projection is recomputable from the log alone; as-of is a query,
-  not archaeology. Implementations SHALL NOT require auxiliary
+  not archaeology. Implementations shall not require auxiliary
   state to reconstruct a point-in-time projection.
 * *Honest degradation*: a continuous projection without a current
-  freshness verdict SHALL degrade explicitly (stating the missing
+  freshness verdict shall degrade explicitly (stating the missing
   verdict), never pass silently.
 
 [[cl-projections-freeze]]
 === Freeze
 
 Freeze turns a continuous projection into a point-in-time one: the
-operation SHALL refuse a descriptor already declared
-point-in-time-less (freezing is the point-in-time act) and SHALL
+operation shall refuse a descriptor already declared
+point-in-time-less (freezing is the point-in-time act) and shall
 attach a verification bundle. The point-in-time form, once notarized
 under trusted time (Clause 12), is immutable.
 
@@ -36,7 +36,7 @@ under trusted time (Clause 12), is immutable.
 
 A **frozen view** is the self-describing publication object — the
 minimal interoperability unit between schemes (the F1 conformance
-class: publishes verifiable frozen views). It SHALL carry:
+class: publishes verifiable frozen views). It shall carry:
 
 a) the rendered payload;
 b) the five-axis descriptor (temporal: point-in-time — enforced);
@@ -50,11 +50,11 @@ e) the verification bundle (the dossier: signed policies, signed
    exchange, and the log receipt when served);
 f) reader instructions: the verification checks, in order.
 
-Verification of a frozen view SHALL succeed using the view alone and
+Verification of a frozen view shall succeed using the view alone and
 the verifier's own anchors: the bundle verifies (12.7), every input
 matches its spine commitment, and every input is a declared lens
 channel — unexplained inputs are refused. **Re-execution**: the
-verifier re-executes the lens over the committed inputs and SHALL
+verifier re-executes the lens over the committed inputs and shall
 obtain the issuer-side payload byte-identically; a mismatch is a
 failure, not a warning. The canonical encoding of the frozen view
 follows Annex B; its golden vectors are conformance material.

@@ -317,7 +317,7 @@ supranational one, is authoritative for all jurisdictions.
 
 The framework specifies the following federation behaviour:
 
-* **Peer registration.** Each jurisdictional registry SHALL register
+* **Peer registration.** Each jurisdictional registry shall register
  itself as a service descriptor with its jurisdiction, endpoints,
  protocol bindings, operator credential, and trust binding. A registry
  that is not registered is not discoverable by conforming clients.
@@ -329,7 +329,7 @@ The framework specifies the following federation behaviour:
  governance (ISO 19135 harmonization items). None of these is a
  passport registry; none holds records of things.
 
-* **Data-shaped functions remain national.** Identifier-in-use
+* **Functions over data remain national.** Identifier-in-use
  allocation, discovery routing for the jurisdiction's context, optional
  deposit (as a profile-legislated Tier-C arrangement), and surveillance
  access are jurisdictional matters, operated as peers.
@@ -339,39 +339,39 @@ The framework specifies the following federation behaviour:
 * **Delegation records.** A registry MAY publish delegation records
  mapping an identifier or identifier-prefix to a peer registry,
  following the DNS-NS / Handle-prefix pattern. A conforming resolver
- SHALL follow delegation chains with a maximum depth, treating
+ shall follow delegation chains with a maximum depth, treating
  depth-exceeded as a resolution failure.
 
 * **Cross-registry as-of.** When composing a point-in-time view across
- peers, a conforming client SHALL apply the as-of parameter to each
- peer's response independently and SHALL record the per-peer as-of
+ peers, a conforming client shall apply the as-of parameter to each
+ peer's response independently and shall record the per-peer as-of
  stamps in the composed result's coverage report.
 
 * **Identity conflict.** If two registries assert authoritative
- registration of the same identity, the condition SHALL be treated as
+ registration of the same identity, the condition shall be treated as
  an integrity incident (the fork rule): detectable via transparency-log
  anchoring, reported as a conflict finding, and never silently merged.
 
 ==== Enumeration resistance obligation
 
-Every registry peer, including jurisdictional ones, SHALL NOT expose a
+Every registry peer, including jurisdictional ones, shall not expose a
 public enumeration surface over identifiers-in-use. Entitled access
 (predicate evaluation by regulators, certificate joins by
-accreditation) SHALL be provided through predicate-based queries that
+accreditation) shall be provided through predicate-based queries that
 evaluate locally and return outcomes, not listings.
 
 ==== Trust cross-recognition
 
-A jurisdictional registry's signing keys SHALL be anchored in its
+A jurisdictional registry's signing keys shall be anchored in its
 jurisdiction's trust list, which participates in the multi-witnessed
 master list. A verifier operating under one jurisdiction's acceptance
-policy SHALL be able to verify another jurisdiction's registry
+policy shall be able to verify another jurisdiction's registry
 signatures through the master list without adopting the foreign
 jurisdiction's rules.
 
 ==== Continuity and succession
 
-A jurisdictional registry SHALL file a succession plan at registration:
+A jurisdictional registry shall file a succession plan at registration:
 the designated successor service, the escrow arrangement for journal
 and item data, and the re-registration procedure. Identity continuity
 across registry succession follows the framework's continuity

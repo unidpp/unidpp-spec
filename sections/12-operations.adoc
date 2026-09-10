@@ -11,17 +11,17 @@ implementation references).
 === The deployment as data
 
 A deployment comprises its configuration (the operator manifest), its
-services' journals, and its seed assets. Services SHALL reconstruct
-their state by journal replay on start; no service SHALL hold
-authoritative state that is not journaled. Configuration SHALL be
+services' journals, and its seed assets. Services shall reconstruct
+their state by journal replay on start; no service shall hold
+authoritative state that is not journaled. Configuration shall be
 externalized data — a deployment's identity, services, and policies
-SHALL be expressible without code changes (the whitelabel and
+shall be expressible without code changes (the whitelabel and
 sovereign profiles are configuration, not forks).
 
 [[cl-ops-backup]]
 === Backup integrity
 
-A backup of a deployment SHALL carry, for every member it contains,
+A backup of a deployment shall carry, for every member it contains,
 an integrity value (SHA-256) in an accompanying manifest, together
 with the UTC moment of the snapshot and a consistency point: the
 transparency log's signed tree head at snapshot time, delimiting what
@@ -30,18 +30,18 @@ a restore replays up to.
 [[cl-ops-restore]]
 === Restore safety
 
-A restore SHALL verify every member's integrity value before
-unpacking any file. A restore SHALL refuse to overwrite an existing
-deployment unless explicitly instructed; when instructed, it SHALL
+A restore shall verify every member's integrity value before
+unpacking any file. A restore shall refuse to overwrite an existing
+deployment unless explicitly instructed; when instructed, it shall
 preserve the replaced state (set aside, never destroyed). Member
-paths belonging to the backed-up deployment's own tenant SHALL be
+paths belonging to the backed-up deployment's own tenant shall be
 rewritten into the restored deployment; members belonging to other
-tenants SHALL be restored as archive material under their original
-identities (a restore SHALL NOT collapse distinct tenants onto shared
+tenants shall be restored as archive material under their original
+identities (a restore shall not collapse distinct tenants onto shared
 paths).
 
 Recovery to the deployment's original shape (disaster recovery)
-SHALL follow the same rules: verified before unpacking, the replaced
+shall follow the same rules: verified before unpacking, the replaced
 state set aside and never destroyed, and every member restored at
 its original path — no rewriting of any kind.
 
@@ -49,10 +49,10 @@ its original path — no rewriting of any kind.
 === Append-only continuity
 
 Service journals are append-only across the service lifecycle: a
-service upgrade or restart SHALL NOT rewrite, reorder, or truncate
-any journal. The journals captured by a pre-upgrade backup SHALL be
+service upgrade or restart shall not rewrite, reorder, or truncate
+any journal. The journals captured by a pre-upgrade backup shall be
 byte-prefixes of the corresponding post-upgrade journals. An operator
-SHALL be able to demonstrate this property by rehearsal: record the
+shall be able to demonstrate this property by rehearsal: record the
 domain state, rebuild and restart the services under the new
 binaries, and show the readings equal and the prefix property holds.
 
@@ -60,20 +60,20 @@ binaries, and show the readings equal and the prefix property holds.
 === Proven restore
 
 A backup that has never been restored is a claim, not a capability.
-An operator deployment SHALL demonstrate its restore path by
+An operator deployment shall demonstrate its restore path by
 rehearsal — backup, restore into an isolated rehearsal target owned
 by the rehearsal itself, verify checksums, confirm restored members
-byte-identical, and validate the restored configuration — and SHALL
-record the rehearsal's outcome as an artifact. The rehearsal SHALL
+byte-identical, and validate the restored configuration — and shall
+record the rehearsal's outcome as an artifact. The rehearsal shall
 NOT touch production state.
 
 [[cl-ops-bundle]]
 === Transfer artifacts
 
 Where a deployment is transferred to another host (on-premise or
-sovereign operation), the transfer artifact SHALL carry per-member
+sovereign operation), the transfer artifact shall carry per-member
 integrity metadata verifiable independently of its producer, and
-SHALL NOT embed secret material: secrets travel as environment
+shall not embed secret material: secrets travel as environment
 references, resolved at the receiving deployment.
 
 [[cl-ops-grid]]
@@ -92,15 +92,15 @@ class (open, pairing-gated, origin-sealed, escrowed), suites,
 window, version — signed by the segment authority; verification
 resolves the key through the trust graph node declared as the
 authority, and a valid signature from any other key does not
-constitute the policy. Superseded and drifted policy versions SHALL
+constitute the policy. Superseded and drifted policy versions shall
 be detected at verification (graded, never silent).
 
 The **commitment spine** is one root over every segment's state
-commitment. It SHALL prove existence, currency and append-only
+commitment. It shall prove existence, currency and append-only
 growth of each segment without opening any: an inclusion proof for
 segment k contains only hashes pertaining to segment k, and verifying
 it requires nothing from any other segment. Rewinds and rewrites
-SHALL NOT be provable as growth. A spine SHALL anchor in the
+shall not be provable as growth. A spine shall anchor in the
 transparency log — one anchoring chain, not two: the spine's digest
 appears as a log commitment, servable as a receipt (inclusion proof
 + signed tree head) that verifies offline and rides the dossier; a
@@ -111,27 +111,27 @@ spine never anchored yields no receipt, stated.
 
 Where the grid governs one subject's data, S13 governs the
 system-to-system request across a border: a verifier requests a
-segment view; the custodian's POLICY answers. The outcome SHALL be
+segment view; the custodian's POLICY answers. The outcome shall be
 one of four machine-reproducible forms — permit, permit-paired,
 attestation offer, escalation — derived from the governing policy's
-reveal class; denial SHALL be stated with its reason, never silent.
-The response SHALL bind to the request digest and cite the governing
+reveal class; denial shall be stated with its reason, never silent.
+The response shall bind to the request digest and cite the governing
 policy identifier and version.
 
 A **sovereign attestation** substitutes for an origin-sealed class:
 a statement ABOUT the segment's commitment (never its contents),
 claiming conformity, commitment-hash or freshness as of a stated
 moment, signed by the sovereign attestation service. High-stakes
-claims SHALL carry an M-of-K quorum co-signature. A verifier SHALL
+claims shall carry an M-of-K quorum co-signature. A verifier shall
 accept such an attestation under its own anchors, and the resulting
-verdict SHALL grade the evidence attested-by-authority — beside
+verdict shall grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
 
-Every cross-border assurance flow SHALL work from exchanged signed
+Every cross-border assurance flow shall work from exchanged signed
 objects alone: the custodian can hand the verifier a **dossier** —
 the signed policies, the signed spine with inclusion proofs, the
 sovereign attestations, the journaled S13 exchange, one document —
-and the verifier SHALL be able to derive the complete foreign
+and the verifier shall be able to derive the complete foreign
 verdict offline, under its own anchors and acceptance policy, with
 zero calls to the custodian's or any foreign synchronous system.
 
@@ -139,17 +139,17 @@ The **coverage report** is a first-class object: per data class, the
 element set reference, the evidence kind (verified-direct /
 attested / explicitly-unavailable), the governing policy identifier
 and version, the reading, and the freshness. Direct and substituted
-verification runs SHALL render their reports through the same
-pipeline, and every report SHALL name the governing policies of the
-classes it covers. Unavailability SHALL be stated as an entry, never
+verification runs shall render their reports through the same
+pipeline, and every report shall name the governing policies of the
+classes it covers. Unavailability shall be stated as an entry, never
 left silent.
 
-Offers and refusals SHALL be non-repudiable: the custodian executes
+Offers and refusals shall be non-repudiable: the custodian executes
 the policy, but the policy AUTHORITY answers for it — the offer or
 refusal carries the authority's counter-signature over the answer
 and its place in the per-subject sequence, so a dispute is decided
-from the record alone. A forged offer SHALL fail the authority's
-signature; a replayed offer SHALL fail its sequence.
+from the record alone. A forged offer shall fail the authority's
+signature; a replayed offer shall fail its sequence.
 
 Acceptance is the RECEIVING profile's decision, never automatic: the
 verifier's profile declares the attestation services it anchors, the

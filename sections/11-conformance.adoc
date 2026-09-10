@@ -213,43 +213,43 @@ operators to produce and keep.
 === Jurisdictional registry operator conformance class
 
 An implementation claiming conformance to the jurisdictional registry
-operator class SHALL satisfy all requirements of the core class and in
+operator class shall satisfy all requirements of the core class and in
 addition:
 
-* **Governance.** The registry SHALL operate under ISO 19135 register
+* **Governance.** The registry shall operate under ISO 19135 register
  governance (register owner, manager, submitting organization, control
- body roles) and SHALL record the governance metadata in its discovery
+ body roles) and shall record the governance metadata in its discovery
  descriptor.
 
 * **Signed descriptors.** All service descriptors, item registrations,
- and applicability bindings SHALL be signed by the registry's operator
+ and applicability bindings shall be signed by the registry's operator
  key, verifiable via the jurisdiction's trust list.
 
-* **Enumeration resistance.** The registry SHALL NOT provide any
+* **Enumeration resistance.** The registry shall not provide any
  endpoint that lists, enumerates, or permits traversal of
  identifiers-in-use without a predicate-scoped, role-qualified query.
- Discovery SHALL be by-identity (pull).
+ Discovery shall be by-identity (pull).
 
 * **Mirroring and availability.** The registry's immutable-per-version
- items SHALL be mirrorable by any conforming peer, with log-anchored
+ items shall be mirrorable by any conforming peer, with log-anchored
  inclusion proofs substituting for direct reachability.
 
-* **As-of semantics.** All read endpoints SHALL support point-in-time
- queries with explicit as-of stamps; responses SHALL be immutable for
+* **As-of semantics.** All read endpoints shall support point-in-time
+ queries with explicit as-of stamps; responses shall be immutable for
  a given (identifier, as-of) pair.
 
-* **Continuity filing.** The registry SHALL maintain a current
+* **Continuity filing.** The registry shall maintain a current
  succession plan, escrow arrangement, and continuity marking, up to
  date at all times.
 
-* **Federation protocol.** The registry SHALL implement cross-registry
+* **Federation protocol.** The registry shall implement cross-registry
  resolution (delegation records, cross-registry as-of, identity-conflict
  detection) per the framework's registry-federation clause.
 
 === Operator deployment conformance class
 
 An implementation claiming conformance to the *operator deployment*
-class SHALL satisfy all requirements of the core class and, in
+class shall satisfy all requirements of the core class and, in
 addition, the operations and durability requirements of
 <<cl-operations>>:
 
