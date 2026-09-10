@@ -101,3 +101,24 @@ growth of each segment without opening any: an inclusion proof for
 segment k contains only hashes pertaining to segment k, and verifying
 it requires nothing from any other segment. Rewinds and rewrites
 SHALL NOT be provable as growth.
+
+[[cl-s13]]
+=== The cross-border seam (S13)
+
+Where the grid governs one subject's data, S13 governs the
+system-to-system request across a border: a verifier requests a
+segment view; the custodian's POLICY answers. The outcome SHALL be
+one of four machine-reproducible forms — permit, permit-paired,
+attestation offer, escalation — derived from the governing policy's
+reveal class; denial SHALL be stated with its reason, never silent.
+The response SHALL bind to the request digest and cite the governing
+policy identifier and version.
+
+A **sovereign attestation** substitutes for an origin-sealed class:
+a statement ABOUT the segment's commitment (never its contents),
+claiming conformity, commitment-hash or freshness as of a stated
+moment, signed by the sovereign attestation service. High-stakes
+claims SHALL carry an M-of-K quorum co-signature. A verifier SHALL
+accept such an attestation under its own anchors, and the resulting
+verdict SHALL grade the evidence attested-by-authority — beside
+verified-direct for opened evidence — naming the governing policy.
