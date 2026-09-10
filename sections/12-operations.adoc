@@ -165,6 +165,14 @@ and the verifier shall be able to derive the complete foreign
 verdict offline, under its own anchors and acceptance policy, with
 zero calls to the custodian's or any foreign synchronous system.
 
+**Provenance coverage** extends the grading from the subject's data
+classes to its ancestry: traversal of the relationship graph
+upstream renders each edge as verified-direct (open evidence seen),
+attested-by-authority (sealed upstream, substitution accepted) or a
+stated gap (missing or unresolvable) — a mixed chain produces the
+three-way report, and an unverified attestation is a stated gap,
+never a pass.
+
 The **coverage report** is a first-class object: per data class, the
 element set reference, the evidence kind (verified-direct /
 attested / explicitly-unavailable), the governing policy identifier
