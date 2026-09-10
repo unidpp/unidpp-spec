@@ -264,3 +264,37 @@ addition, the operations and durability requirements of
 * **Proven restore** — recorded restore rehearsals (<<cl-ops-drill>>);
 * **Transfer artifacts** — integrity-verified bundles without
   embedded secrets (<<cl-ops-bundle>>).
+
+=== Federation classes (F1–F5)
+
+Federation conformance is claimed at one of five classes, aligned
+with the harmonization ladder. The classes measure federation
+level — what a system interoperates AS — not how much of any
+software suite it runs; a system running no UniDPP component may
+claim F1 with its own exporter, and a system running several
+components may still interoperate only at F1.
+
+[[tbl-federation-classes]]
+.Federation classes
+|===
+| Class | Claim | Machine-checkable test
+
+| F1 | publishes verifiable frozen views | a frozen view published by the claimant verifies under a third party's own anchors, air-gapped: the bundle verifies, every input matches its spine commitment, and the lens re-execution reproduces the issuer-side payload byte-identically (<<cl-frozen-view>>)
+| F2 | S13 protocol participant | a request/response exchange with a peer completes end to end: the verifier's signed request and the custodian's signed, journal-replayable response verify, the outcome derives from the governing policy, and the response cites the governing policy identifier and version (<<cl-s13>>)
+| F3 | mapping-capable | registered mapping items flow in and out: a tier-1 mapping transforms deterministically between the parties' structures, with declared scope and residual for tier 2, and tier-3 pairs render as distinct items with no correspondence asserted
+| F4 | shared-profile adopter | a shared profile is served by one party and consumed by another: the profile's manifest is honored by both renders, and disagreement is stated, never merged
+| F5 | full core implementer | the whole of this specification's core requirements, verified by the core conformance test material of this clause
+|===
+
+The federation level between two systems is the minimum of their
+classes and of their policies — the composition law
+(<<cl-ops-grid>>) as a conformance statement: a policy cap cannot
+be lifted by any bridge, and no class above the minimum is
+effective for the pair.
+
+Class tests are runnable by any third party against any deployment,
+including the reference implementation, which self-certifies at F5
+in its continuous integration. The test material for F1 is the
+frozen-view verification command of the reference CLI; the test
+material for F2 and F3 lands with the implementation phases that
+carry them.
