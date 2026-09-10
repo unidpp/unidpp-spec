@@ -140,6 +140,13 @@ pipeline, and every report SHALL name the governing policies of the
 classes it covers. Unavailability SHALL be stated as an entry, never
 left silent.
 
+Offers and refusals SHALL be non-repudiable: the custodian executes
+the policy, but the policy AUTHORITY answers for it — the offer or
+refusal carries the authority's counter-signature over the answer
+and its place in the per-subject sequence, so a dispute is decided
+from the record alone. A forged offer SHALL fail the authority's
+signature; a replayed offer SHALL fail its sequence.
+
 Acceptance is the RECEIVING profile's decision, never automatic: the
 verifier's profile declares the attestation services it anchors, the
 claim classes it accepts, the quorum strength it demands, the
