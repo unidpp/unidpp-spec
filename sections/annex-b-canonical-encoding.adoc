@@ -95,6 +95,7 @@ cross-domain substitution and fail it loudly.
 | `UNIDPP-SIGNATIF/PROFILE` | A signed profile manifest (Clause 5)
 | `UNIDPP-SIGNATIF/S13-MESSAGE` | An S13 cross-border message (<<cl-s13>>)
 | `UNIDPP-SIGNATIF/SOVEREIGN-ATTESTATION` | A sovereign attestation service's signature over an attestation statement (<<cl-s13>>)
+| `UNIDPP-SIGNATIF/INTEROP-DECLARATION` | A scheme's interop declaration (SI-8)
 |===
 
 [[cl-cn-vectors]]
