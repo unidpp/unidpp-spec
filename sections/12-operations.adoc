@@ -122,3 +122,13 @@ claims SHALL carry an M-of-K quorum co-signature. A verifier SHALL
 accept such an attestation under its own anchors, and the resulting
 verdict SHALL grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
+
+Acceptance is the RECEIVING profile's decision, never automatic: the
+verifier's profile declares the attestation services it anchors, the
+claim classes it accepts, the quorum strength it demands, the
+freshness it requires, and the truth mode it tolerates per element
+(only-opened evidence; attested evidence admissible; explicit
+unavailability tolerable). The grade an attestation earns is the
+minimum of what it proves and what the receiving profile accepts:
+the same evidence under two profiles yields two different, both
+correct, verdicts.
