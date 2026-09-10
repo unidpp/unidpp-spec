@@ -123,6 +123,14 @@ accept such an attestation under its own anchors, and the resulting
 verdict SHALL grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
 
+Every cross-border assurance flow SHALL work from exchanged signed
+objects alone: the custodian can hand the verifier a **dossier** —
+the signed policies, the signed spine with inclusion proofs, the
+sovereign attestations, the journaled S13 exchange, one document —
+and the verifier SHALL be able to derive the complete foreign
+verdict offline, under its own anchors and acceptance policy, with
+zero calls to the custodian's or any foreign synchronous system.
+
 The **coverage report** is a first-class object: per data class, the
 element set reference, the evidence kind (verified-direct /
 attested / explicitly-unavailable), the governing policy identifier
