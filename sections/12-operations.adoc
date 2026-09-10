@@ -127,6 +127,24 @@ accept such an attestation under its own anchors, and the resulting
 verdict shall grade the evidence attested-by-authority — beside
 verified-direct for opened evidence — naming the governing policy.
 
+A verification **route** is the plan by which a verifier reaches a
+verdict: resolution, transport, documents, mappings, loci and
+substitutions, computed from anchors and policy. Execution is
+deterministic, and the executed route is the coverage report's
+replayable trace: re-running the recorded steps over the recorded
+inputs reproduces the verdict byte-identically. A gap that the route
+cannot cover is recorded as a stated gap step in the trace, never
+left silent.
+
+The **composition law** governs what interop a pair effectively has:
+per pair, direction, data class and time, the effective level is the
+minimum over the layer caps and the policy or recognition cap; the
+bottleneck layer is reported; a policy cap cannot be lifted by any
+bridge. The technical state of a relationship is described per layer
+— transport, protocol, structure, semantics, identity, trust — as
+same, bridged by a registered mapping, or gap, and is carried in the
+discovery registry's service descriptors.
+
 Assurance flows travel by three transport modes, chosen per pair:
 connected protocol (the S13 exchange), document exchange (frozen
 views and dossiers), and hub relay. Willingness is a precondition —
