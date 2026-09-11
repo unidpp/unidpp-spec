@@ -35,9 +35,10 @@ encoding:
   followed by the value's encoding when present, unless the object
   declares absence as omission.
 * *Collections*: maps are encoded in ascending key order (the
-  BTreeMap order); order-insensitive lists are sorted before
-  encoding, and two orderings of the same members shall produce
-  identical canonical bytes.
+  BTreeMap order); order-insensitive lists of text values are
+  deduplicated, sorted in ascending byte order, and joined with the
+  unit separator U+001F as ONE field, and two orderings of the same
+  members shall produce identical canonical bytes.
 * *Structs*: fields in the object's declared order — that order is
   normative and shall not be changed without a version change.
 
@@ -109,3 +110,29 @@ exactly is conformant with B.2; one that does not is not. Fixtures
 are versioned with the framework and replayed in continuous
 integration, so a rule change without a fixture change — or the
 reverse — is a visible break, not a silent drift.
+
+[[cl-cn-signed-payloads]]
+=== Signed-object payloads (B.5)
+
+Each signature domain of Table B.2 signs the domain-framed form of
+exactly the following payload (the canonical bytes of the object as
+defined by its clause; entries listed where the payload is a
+derivation rather than the object's canonical bytes):
+
+* SEGMENT-POLICY — the policy object's canonical bytes (Clause 12).
+* SPINE-ROOT — the spine's whole-object digest (Table B.1, row 4).
+* SOVEREIGN-ATTESTATION — the attestation statement's canonical
+  bytes (Clause 12).
+* QUORUM — the length-prefixed quorum node identifier, followed by
+  the threshold as u32 little-endian, followed by the statement
+  bytes the co-signature covers.
+* S13-MESSAGE — the request's or the response's canonical bytes
+  (Clause 12).
+* INTEROP-DECLARATION — the declaration's canonical bytes
+  (declarer, counterpart, version, postures, window).
+* HUB-RELAY — the hub identifier, the forwarded bytes' digest, the
+  endpoints and the data class, each length-prefixed.
+
+Key identifiers are derived from the public key as the first 16
+hexadecimal characters of sha256(suite-code byte ‖ public-key
+bytes), prefixed with `k-`.
