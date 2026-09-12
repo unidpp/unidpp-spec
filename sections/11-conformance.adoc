@@ -304,4 +304,10 @@ while issuing signed requests of its own; F3 is the mapping-chain
 vector (tier-1 hops, a tier-2 correspondence, a tier-3 divergence),
 which the foreign harness reproduces and applies under the tier
 discipline. All three classes are proven by an implementation the
-framework authors did not write.
+framework authors did not write. The reference CLI runs every
+class's claim test through one command — `unidpp conform <class>
+<material>` (f1 a frozen view under the runner's own anchors; f2
+the signed exchange; f3 the mapping chain; f4 two views under one
+shared profile; f5 the family's golden-vector sweep) — so any third
+party can test any deployment, including its own, with one
+binary.
