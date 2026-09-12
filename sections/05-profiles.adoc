@@ -239,6 +239,14 @@ Freshness shall be evaluated against the projection's as-of stamp
 (10.4). Staleness shall be reported explicitly as a freshness verdict
 and shall never silently pass (I13).
 
+A profile may in addition declare a per-element freshness demand
+(`fresh_within`, an ISO 8601 duration) on a data point: the
+element's evidence shall be at least as fresh as the demand at the
+projection moment. A breached element-level demand degrades that
+element's reading with the demand and the observed age named — the
+profile-level window and the element-level demand are independent
+requirements, and satisfying one never satisfies the other.
+
 [[cl-profile-lifecycle]]
 === Profile lifecycle and dated bindings
 

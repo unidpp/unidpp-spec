@@ -22,6 +22,20 @@ Two requirements follow from the calculus:
   freshness verdict shall degrade explicitly (stating the missing
   verdict), never pass silently.
 
+[[cl-projections-twin]]
+=== The conforming-twin interface
+
+A digital twin conforms for the purpose of a lens by serving, for
+each input channel the lens declares, the channel's bytes under the
+segment state commitment that pins them — a commitment the carried
+spine proves (12.6). No other interface is required of the twin:
+neither an API, nor a format, nor a location. A lens applies to any
+twin that serves its declared channels; a twin that serves none of
+them is not conforming for that lens, stated, and the projection
+refuses rather than substituting. Freeze (13.2) is the act of
+capturing exactly this interface: the committed inputs of the
+frozen view ARE the lens's channels, pinned by the spine.
+
 [[cl-projections-freeze]]
 === Freeze
 
