@@ -198,3 +198,41 @@ unavailability tolerable). The grade an attestation earns is the
 minimum of what it proves and what the receiving profile accepts:
 the same evidence under two profiles yields two different, both
 correct, verdicts.
+
+=== Erasure, trusted time and archival
+
+*Erasure under append-only* is key destruction: the segment's keys
+are destroyed and the plaintext becomes unrecoverable, while the
+commitment remains — hashes are not facts — so the spine continues
+to prove the history's shape. Erasure applies to consumer-held and
+owner-push segments; a shared segment carrying personal data is
+refused at intake (minimization), and erasure of a shared segment
+is refused. A subject's held segment exports under the subject's
+credential and round-trips.
+
+*Trusted time*: a notarization references verifiable time — log
+inclusion or an external time anchor. A verdict over unanchorable
+time degrades with the reason named. Freshness computations declare
+their clock assumption, and drift beyond the declared bound
+degrades the freshness verdict — never passes.
+
+*Archival (Tier C)*: a decommissioned subject exports to an
+archival package carrying its core state and an integrity manifest.
+Renders derive from identity and content only; the archival moment
+is package metadata. Media refresh changes the medium, never the
+identity or the content.
+
+=== Suite migration and binding pluralism
+
+Algorithm-suite migration is rehearsed like upgrades: the drill
+signs across the migration phases (classical, hybrid co-signed),
+flips the acceptance policy to the successor suite, and re-derives
+every verdict — hybrid-signed objects still verify, classical-only
+objects degrade, and the journals replay untouched (migration is a
+policy act, not a rewrite). A coverage gap is the drill's finding,
+named before cutover.
+
+Protocol bindings are plural: the EN 18222-compatible API and the
+UNTP render are two bindings of one retrieval capability, serving
+the same core state — an implementation serving one binding is
+interrogated through it, and neither is the definition.
