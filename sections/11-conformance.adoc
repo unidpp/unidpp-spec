@@ -294,7 +294,14 @@ effective for the pair.
 
 Class tests are runnable by any third party against any deployment,
 including the reference implementation, which self-certifies at F5
-in its continuous integration. The test material for F1 is the
-frozen-view verification command of the reference CLI; the test
-material for F2 and F3 lands with the implementation phases that
-carry them.
+in its continuous integration. The test material for each class is
+public: F1 is the frozen-view verification command of the reference
+CLI, reproduced by the foreign harness air-gapped; F2 is the signed
+exchange vector (a verifier-signed request and a custodian-signed
+response in the S13-MESSAGE domain), which the foreign harness
+verifies and re-derives — the outcome from the governing policy —
+while issuing signed requests of its own; F3 is the mapping-chain
+vector (tier-1 hops, a tier-2 correspondence, a tier-3 divergence),
+which the foreign harness reproduces and applies under the tier
+discipline. All three classes are proven by an implementation the
+framework authors did not write.
