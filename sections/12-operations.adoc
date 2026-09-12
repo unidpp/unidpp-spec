@@ -106,6 +106,15 @@ appears as a log commitment, servable as a receipt (inclusion proof
 + signed tree head) that verifies offline and rides the dossier; a
 spine never anchored yields no receipt, stated.
 
+An **edge segment** publishes commitments over its local log
+prefixes: commit first, reveal later, and never contradict. The
+commitment names the prefix length and the prefix state; a later
+reveal shall recompute it — a reveal inconsistent with a prior
+commitment shall be rejected, the commitment and the reveal named.
+The law holds unconditionally: the commitment proves the log's
+growth without opening the sealed classes, so a contradiction is a
+provable fault, not a discrepancy to weigh.
+
 [[cl-s13]]
 === The cross-border seam (S13)
 

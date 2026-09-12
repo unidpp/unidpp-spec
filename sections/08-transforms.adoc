@@ -115,10 +115,26 @@ b) *Decompose* (E13) is the inverse transformation at end-of-life,
 
 c) The material state machine closes the loop: natural resource →
  extracted lot (batch passport plus extraction profile) →
- transformation chain → product → waste status → *end-of-waste event
- = new passport issuance* → secondary raw material → re-entry. Mass
- balance and taint propagate through the whole loop (cradle-to-
+ transformation chain → product → waste status → end-of-waste event
+ → secondary raw material → re-entry — where the end-of-waste event
+ either re-qualifies the SAME identity (see d) — no new passport) or,
+ for a decomposed lot, issues derived material passports per b).
+ Mass balance and taint propagate through the whole loop (cradle-to-
  cradle, not cradle-to-grave).
+
+d) *Productness is a dated, per-regime predicate*, not a property of
+ matter. Each regime ascribes productness on its own criteria, dated
+ and cited; the same object shall be a product under one regime and
+ waste under another at the same moment, and the standing under a
+ regime is the latest dated record, with the history preserved.
+
+e) The two re-entries into commerce shall be distinguished and shall
+ never be conflated. *Same-identity re-entry* — end-of-waste under a
+ regime whose criteria are satisfied — re-qualifies the same
+ identity: the predicate toggles, dated, and no new passport issues.
+ *Derived-identity re-entry* — scrap, split or decomposition, where
+ the material loses its identity — issues a new passport following
+ the derivation edge R2; the parent identity does not re-qualify.
 
 [[cl-transform-units]]
 === Units and quantities
