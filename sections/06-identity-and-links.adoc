@@ -98,6 +98,55 @@ f) Replacement of a physical carrier (re-issuing a QR code on an
  unchanged identity) shall be a registry event on the unchanged
  identity and shall not alter the identifier.
 
+g) *Identity rotation (supersession).* An identity regime may rotate:
+ a scheme re-issues identities, a national layer replaces its
+ marketing codes with digital identities (the GS1 China commodity-QR
+ to digital-identity migration of 2025-11), a registry merges
+ namespaces. Rotation shall be a *stated event*, never a silent
+ redirect and never an unexplained error. A supersession record shall
+ name the successor identifier, the effective instant, the stating
+ authority and a reason; the record is append-only, and a later
+ rotation supersedes an earlier one by declaration, never by edit.
+
+h) *The old identity resolves and states its successor.* During the
+ rotation window the superseded identity shall continue to resolve,
+ and every non-dark response shall carry the successor statement — in
+ the machine-readable form (linkset members or headers) and in the
+ consumer-facing form (the migration notice on the rendered page).
+ Rotation shall not remove entries; removal remains a revocation, a
+ distinct act.
+
+i) *Absence after rotation is stated.* Once a superseded identity's
+ entries are gone, resolution shall state the absence *with* the
+ successor — a bare "not found" is permitted only where no rotation
+ record exists, because silence is the failure mode rotation exists
+ to prevent.
+
+j) *Darkness outranks rotation.* A dark identity (6.7, I12) shall
+ serve no rotation statement: darkness means no information, and
+ byte-identical refusal holds regardless of any rotation record.
+
+k) *Same-subject multiplicity.* A physical thing may carry more than
+ one concurrent passport under more than one scheme — jurisdictional
+ mandates, redundant-system resilience and rotation windows all
+ require coexistence — and this shall be treated as the normal
+ condition, never an anomaly to consolidate. The framework shall
+ support an *attested same-subject correlation* between passports:
+ a signed, dated relation naming its assertor, its evidence and its
+ direction, through which a verifier holding either passport can
+ discover and state the other. Resolution shall correlate, never
+ merge; a correlation is content the rest of the framework (views,
+ verdicts, gates, projections) consumes like any other fact.
+
+[NOTE]
+====
+Informative implementation reference: `unidpp-resolver` `src/store.rs`
+(`Op::Supersede`, `Supersession`, `supersession_at`) — the rotation
+record in the append-only journal — and `src/api.rs`
+(`POST /admin/supersessions`; the `unidpp:superseded-by` linkset
+members and the `X-UniDPP-Superseded-By` header).
+====
+
 [[cl-id-lattice]]
 === The identity lattice and issuance granularity
 
