@@ -140,11 +140,14 @@ k) *Same-subject multiplicity.* A physical thing may carry more than
 
 [NOTE]
 ====
-Informative implementation reference: `unidpp-resolver` `src/store.rs`
-(`Op::Supersede`, `Supersession`, `supersession_at`) — the rotation
-record in the append-only journal — and `src/api.rs`
-(`POST /admin/supersessions`; the `unidpp:superseded-by` linkset
-members and the `X-UniDPP-Superseded-By` header).
+Informative implementation references. Rotation: `unidpp-resolver`
+`src/store.rs` (`Op::Supersede`, `Supersession`, `supersession_at`)
+and `src/api.rs` (`POST /admin/supersessions`; the
+`unidpp:superseded-by` linkset members and the
+`X-UniDPP-Superseded-By` header). Same-subject correlation:
+`src/store.rs` (`Op::Correlate`, `Correlation`, `correlations_at`) and
+`src/api.rs` (`POST /admin/correlations`; the `unidpp:correlated-with`
+linkset members and the `X-UniDPP-Correlated-With` header).
 ====
 
 [[cl-id-lattice]]
