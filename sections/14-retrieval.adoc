@@ -26,9 +26,9 @@ responses are freshness-labelled.
 
 For any withheld class, the response carries the omission WITH its
 explanation: the governing policy identifier and version, and an
-offer pointer where the governing policy offers substitution — an
-attestation service for origin-sealed classes, an escrow reference
-for escrowed classes. A bare refusal without explanation does not
+offer pointer where the governing policy offers substitution, which
+is an attestation service for origin-sealed classes or an escrow
+reference for escrowed classes. A bare refusal without explanation does not
 conform.
 
 [[cl-retrieval-errors]]
@@ -55,7 +55,7 @@ verifiable fully offline).
 
 This interface is a capability, not an API: any registered protocol
 binding may serve it. An EN 18222-compatible serving API is one
-registered binding — that of the European profile — and a second
+registered binding, that of the European profile, and a second
 binding serving the same core state demonstrates the capability.
 No binding of this interface is mandated for conforming
 implementations; each declares the representation tokens it serves.

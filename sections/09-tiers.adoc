@@ -17,7 +17,7 @@ The framework shall serve payloads in three tiers (I13):
  lifetime, archival refresh).
 
 The framework shall fix exactly which subset of fields is Tier A
-(10.2); every field of the Tier-A subset shall be mandatory — there
+(10.2); every field of the Tier-A subset shall be mandatory, there
 shall be no optional-field shrinking, because shrinking would silently
 degrade the offline minimum. Stale or offline data shall degrade
 explicitly through freshness verdicts (10.4) and shall never silently
@@ -77,9 +77,10 @@ b) *Deterministic encoding.* The Tier-A payload shall be encoded as a
 
 c) *Conservative projection.* Budgeting shall use the *projected
  length*: signature placeholders counted at each suite's canonical
- signature length — 64 bytes for ECDSA P-256 and SM2; 2 420 bytes for
- ML-DSA-44; 3 309 bytes for ML-DSA-65; 4 627 bytes for ML-DSA-87 — so
- that a frame-only payload is budgeted as if fully signed.
+ signature length, which is 64 bytes for ECDSA P-256 and SM2,
+ 2 420 bytes for ML-DSA-44, 3 309 bytes for ML-DSA-65 and 4 627 bytes
+ for ML-DSA-87, so that a frame-only payload is budgeted as if fully
+ signed.
 
 d) *Version selection.* The smallest carrier version that holds the
  projected payload at the configured error-correction level shall be
@@ -155,9 +156,10 @@ invariant 4 of 5.11). Some lifecycle events originate on-device
 circumstance or unwilling by policy (privacy, trade secrets). The
 *commit-now, reveal-later, never-contradict* rules shall hold:
 
-a) the device shall publish commitments — a hash of its local
- append-only event log prefix, signed by a device-bound key holding
- device credentials — plus whatever events it chooses to reveal;
+a) the device shall publish commitments, which are a hash of its
+ local append-only event log prefix signed by a device-bound key
+ holding device credentials, plus whatever events it chooses to
+ reveal;
 
 b) future reveals shall be inclusion-consistent with past commitments
  (the transparency-log pattern applied to device logs: the device can

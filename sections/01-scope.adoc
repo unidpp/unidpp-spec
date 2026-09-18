@@ -1,13 +1,13 @@
 == Scope
 
 This document specifies the UniDPP framework for digital product
-passports. The framework defines a neutral core — one identity per
-subject, one append-only event-sourced record per subject, typed
-relationships between subjects, quantity-conserving transformations, and
-a deterministic projection mechanism — together with the profile
-mechanism by which jurisdiction, sector and characteristic requirements
-constrain and transform, but never redefine, the single definition of
-each data point.
+passports. The framework defines a neutral core, which comprises one
+identity per subject, one append-only event-sourced record per subject,
+typed relationships between subjects, quantity-conserving
+transformations, and a deterministic projection mechanism, together
+with the profile mechanism by which jurisdiction, sector and
+characteristic requirements constrain and transform, but never
+redefine, the single definition of each data point.
 
 This document is applicable to:
 
@@ -58,8 +58,8 @@ l) the conformance classes (Core, Profile author, Host, Verifier,
 The following are outside the scope of this document:
 
 m) the legal instruments, delegated acts and regulatory content that
- profiles bind — the framework standardizes the mechanism, and each
- regulator defines its profiles through the registry;
+ profiles bind, because the framework standardizes the mechanism and
+ each regulator defines its profiles through the registry;
 
 n) the content of individual data points, which is fixed by registered
  data-element definitions;
@@ -72,7 +72,7 @@ p) mappings to specific twin representations other than as informative
  Asset Administration Shell is informative at most and is never
  load-bearing.
 
-Solutions presented in this document are realization-neutral: they
-specify the optics (identity, events, projections, trust) and derive
-representation formats, rather than legislating implementation details
-of any single deployment.
+The solutions presented in this document are realization-neutral: they
+specify the identity, event, projection and trust mechanisms, and they
+derive the representation formats from those mechanisms, rather than
+legislating implementation details of any single deployment.

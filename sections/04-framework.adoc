@@ -11,35 +11,37 @@ legal materialized view of that record under a profile (Clause 6). The
 following counter-principles govern every other clause of this
 document:
 
-a) specify the optics and derive the image format — the framework
- specifies identity, events, projections and trust, and derives
- representations;
+a) The framework specifies the identity, event, projection and trust
+ mechanisms and derives the representation formats from them, so that
+ no representation format is authoritative over the mechanisms it
+ renders;
 
-b) legislate invariants, not implementations — casing conventions,
- address shapes and serialization corners are versionable registry
- items, not core requirements;
+b) the framework legislates invariants rather than implementations,
+ with the consequence that casing conventions, address shapes and
+ serialization corners are versionable registry items and not core
+ requirements;
 
-c) one formalization — the core model is single-sourced; UML, JSON and
- XML renders are derived views and never authoritative over it;
+c) the framework maintains one formalization of the core model, from
+ which UML, JSON and XML renders are derived views that are never
+ authoritative over the core model;
 
-d) versioned lenses, immutable scenes — profiles are versioned and
- registered; the testimonial record is append-only and never altered
- by observation;
+d) profiles are versioned and registered, while the testimonial record
+ is append-only and is never altered by observation;
 
-e) publish the uncertainty — every lens publishes its measurement
- uncertainty and its decision rules as mandatory metadata;
+e) every profile publishes its measurement uncertainty and its
+ decision rules as mandatory metadata;
 
-f) open mount — the profile interface on the neutral core is open, and
- the interop guarantee and the anti-lock-in clause are one and the
- same sentence.
+f) the profile interface on the neutral core is open, and the
+ interoperability guarantee and the protection against lock-in are
+ expressed by one and the same requirement.
 
 The profile is conceived as a calibrated lens placed on the digital
-twin: the scene (the twin, invariant, append-only) is never altered by
-observation; the lens (the profile, versioned, registered) selects and
-transforms. The lens is not passive glass but a *legal measuring
-instrument*: pattern approval at registration, published calibration,
-uncertainty and decision rules, and periodic re-verification through
-conformance runs.
+twin. The twin is invariant and append-only, and it is never altered by
+observation; the profile is versioned and registered, and it selects
+and transforms. The profile is further conceived as a *legal measuring
+instrument*, which is subject to pattern approval at registration,
+which publishes its calibration, uncertainty and decision rules, and
+which undergoes periodic re-verification through conformance runs.
 
 [[cl-framework-inv]]
 === Normative design invariants
@@ -146,8 +148,8 @@ readings (11.4), revocation reason shall determine retroactivity
 
 [[inv-I10]]
 *Invariant I10 — three-axial, predicate-triggered profiles.* Profiles
-shall be composed on three axes — jurisdiction, sector and
-characteristic — and shall attach by trigger predicate evaluated
+shall be composed on three axes, which are jurisdiction, sector and
+characteristic, and shall attach by trigger predicate evaluated
 against twin facts (6.4). Each profile shall bind data points,
 transforms, cryptographic suites, trust requirements, access policies,
 presentation requirements and carrier requirements (6.3).
@@ -173,8 +175,9 @@ predicate-based (7.7).
 
 [[inv-I13]]
 *Invariant I13 — degradation ladder.* Payloads shall be served in three
-tiers — Tier A (carrier-embedded minimum), Tier B (served) and Tier C
-(archival) — and degradation between tiers shall be explicit through
+tiers, which are Tier A (carrier-embedded minimum), Tier B (served)
+and Tier C (archival), and degradation between tiers shall be explicit
+through
 freshness verdicts (10.4), never a silent pass. Availability shall be
 decoupled from origin servers through transparency-log inclusion
 proofs, mirrors and archives (10.7).
@@ -206,10 +209,11 @@ envelope.
 | L6 | Regional serving | in-country DPP service provision where data-residency law requires it | national hosts, regional service providers
 |===
 
-The resolution chain shall proceed: carrier URI → federated resolver →
-linkset (profile context × role × language) → hosting endpoint(s) →
-render plus manifest, with registry and dictionary lookups performed in
-parallel. Mirrors and caches shall carry as-of stamps.
+The resolution chain shall proceed from the carrier URI through the
+federated resolver and the linkset, which is keyed by profile context,
+role and language, to the hosting endpoints, and shall conclude with
+the render and its manifest, with registry and dictionary lookups
+performed in parallel. Mirrors and caches shall carry as-of stamps.
 
 [[cl-framework-roles]]
 === Role separation and authority model
@@ -223,7 +227,7 @@ roles; one party may hold several, and none is implied by another.
 |===
 | Role | Responsibility | Notes
 
-| Issuing authority | signs passport issuance and derivation events: manufacturer (primary), transformer (splits, combines), remanufacturer (new types), registrar (type passports), qualified attestor (commissioning of orphan objects), regulator-direct (exceptional) | issuance is open; recognition is graded by each profile's trust binding — unsigned self-issued passports remain valid for voluntary provenance and insufficient for regulated claims
+| Issuing authority | signs passport issuance and derivation events: manufacturer (primary), transformer (splits, combines), remanufacturer (new types), registrar (type passports), qualified attestor (commissioning of orphan objects), regulator-direct (exceptional) | issuance is open; recognition is graded by each profile's trust binding, so that unsigned self-issued passports remain valid for voluntary provenance and insufficient for regulated claims
 | Hosting authority | serves renders: DPP service providers (main and back-up), manufacturer source systems, custodian-held state, device edge, national in-country hosts | republication never transfers authority
 | Registrar | identity, type registrations, profile applicability bindings, carrier replacement events | registry holds identity and resolution, not state
 | Anchor | transparency logs: the tamper-evident spine | M-of-K quorum, no single log
@@ -250,7 +254,7 @@ architecture. Conformance claims shall identify the seams covered.
 
 | S1 | carrier ↔ resolver | code-format translation; 1D-to-2D migration coexistence; carrier URI integrity
 | S2 | resolver ↔ hosts | mirrors, national intermediary layers, dark identifiers; linkset routing
-| S3 | core ↔ profiles | the mount — where neutrality is enforced (6.1)
+| S3 | core ↔ profiles | the mount, at which neutrality is enforced (6.1)
 | S4 | profile ↔ registry | data-point reference resolution, version pinning at verification time
 | S5 | registry ↔ registry | register federation, canonicalization of definitions across hosts, cross-register mappings as registered items
 | S6 | event log ↔ transparency logs | commitment anchoring, salt discipline (8.3)
@@ -282,27 +286,29 @@ given.
 |===
 | # | Source invariant | Elaborated in
 
-| 1 | International interoperability — cross-verification without adopting foreign rules (verify any jurisdiction's view under your own anchors) | 11.4, 11.6
-| 2 | National data sovereignty — each jurisdiction governs its profiles, trust, crypto and, where law requires, in-country serving | 6.8, 11.2
+| 1 | International interoperability, which requires that cross-verification be possible without adopting foreign rules, so that any jurisdiction's view is verifiable under the verifier's own anchors | 11.4, 11.6 |
+| 2 | National data sovereignty, under which each jurisdiction governs its profiles, trust, cryptography and, where law requires, in-country serving | 6.8, 11.2 |
 | 3 | Digital twin as the interactive layer; passport as its legal projection | 6.1
-| 4 | State-topology freedom — edge segments, centralized providers, manufacturer source systems or any combination; the twin is the union of custodian-held event segments joined by identity and commitments | 10.6
-| 5 | Offline-online combination — Tier A carrier minimum, Tier B served, Tier C archival; explicit freshness verdicts | Clause 10
-| 6 | Static and dynamic projections — profiles declare per-element provenance and freshness requirements | 6.6
-| 7 | Point-in-time versus dynamic state — two authoritative query modes: live view (freshness-labelled) and notarized as-of snapshot (log-anchored); legal purpose selects the mode | 8.6
-| 8 | Signed and unsigned — trust is graded: every element/event carries a trust marker; profiles set minimum signing per data class | Clause 11
-| 9 | Profile-set growth is dated binding, not new identity — adding a profile to an existing model is a registry applicability event with an effective window (including retroactive flags); new model identity only on technical type change | 6.7, 7.4
-| 10 | Issuance-granularity rule — manufacturer is an actor, not a level; model is a registered type definition that defines semantics for instance elements; passports are issued wherever a legal duty attaches; instance passports reference the exact type version and configuration vector; model-contains-model defines potential composition, instance references actual child instances | 7.4
-| 11 | Executable-rule placement — a profile may bind an executable regulation package as its transform, decision and conformity rule set, carrying clause-level provenance identifiers; conformance suites run the same packages | 9.6
+| 4 | State-topology freedom, which admits edge segments, centralized providers, manufacturer source systems or any combination, the twin being the union of custodian-held event segments joined by identity and commitments | 10.6 |
+| 5 | Offline-online combination, comprising the Tier A carrier minimum, the Tier B served payload and the Tier C archival payload, with explicit freshness verdicts | Clause 10 |
+| 6 | Static and dynamic projections, under which profiles declare per-element provenance and freshness requirements | 6.6 |
+| 7 | Point-in-time versus dynamic state, providing two authoritative query modes, which are the freshness-labelled live view and the log-anchored notarized as-of snapshot, the legal purpose selecting the mode | 8.6 |
+| 8 | Signed and unsigned content under graded trust, in which every element and event carries a trust marker and profiles set minimum signing per data class | Clause 11 |
+| 9 | Profile-set growth as dated binding rather than new identity, under which adding a profile to an existing model is a registry applicability event with an effective window including retroactive flags, and a new model identity arises only on technical type change | 6.7, 7.4 |
+| 10 | The issuance-granularity rule, under which the manufacturer is an actor rather than a level, the model is a registered type definition that defines semantics for instance elements, passports are issued wherever a legal duty attaches, instance passports reference the exact type version and configuration vector, a model-contains-model relation defines potential composition, and an instance references actual child instances | 7.4 |
+| 11 | Executable-rule placement, under which a profile may bind an executable regulation package as its transform, decision and conformity rule set carrying clause-level provenance identifiers, and conformance suites run the same packages | 9.6 |
 |===
 
 [NOTE]
 ====
 The travel-document analogy holds for trust, issuance and the offline
-tier: the electronic passport for trust and issuance, the machine-
-readable zone for the offline minimum, and the international driving
-permit for profiles — a national document with convention renditions.
-Unlike travel documents, the scene is a live twin and the profile set
-grows.
+tier: the electronic passport stands for trust and issuance, the
+machine-readable zone stands for the offline minimum, and the
+international driving permit stands for the profile mechanism, in that
+it is a national document that carries convention renditions. The
+analogy differs from travel documents in two respects, which are that
+the underlying record is a live twin and that the set of profiles
+grows over time.
 ====
 
 === Registry federation

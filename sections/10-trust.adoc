@@ -58,7 +58,7 @@ c) Jurisdictional cryptographic suites are part of the profile, not of
 
 d) Signature framing shall reserve the full canonical length of each
  slot (10.3 c); a slot may be framed only (placeholder) with the
- signature value filled by the signing layer — such framing is
+ signature value filled by the signing layer; such framing is
  explicit and degrades the verdict (10.5).
 
 e) Verifiers shall check only what their profile-scoped acceptance
@@ -91,8 +91,8 @@ b) Jurisdiction stamps on a foreign-issued passport correspond to
  (E1 and E14).
 
 c) Condition grading and appraisal verdicts are stamps: value is a
- verdict, not a fact — auction-house lens and insurance lens are
- different lenses over the same scene.
+ verdict rather than a fact, and the auction-house lens and the
+ insurance lens are different lenses over the same scene.
 
 d) Stamp verdicts shall state which verification reading they answer
  (11.4).
@@ -180,8 +180,9 @@ e) *Graph taint* shall propagate per 9.7 c; issuer misconduct leads to
 [[cl-trust-signatif]]
 === Trust infrastructure (SIGNATIF)
 
-The trust registry of the framework shall follow the SIGNATIF model — a
-federated threshold system rather than a single global PKI — and conforming
+The trust registry of the framework shall follow the SIGNATIF model,
+which is a federated threshold system rather than a single global
+PKI, and conforming
 implementations of the trust layer shall conform to <<signatif>>. The
 normative elements are:
 
@@ -237,10 +238,10 @@ d) *Regime succession.* Cross-recognition suspensions and
 
 === Party model and the signing matrix
 
-Trust-graph nodes declare a party class — one of government,
+Trust-graph nodes declare a party class, which is one of government,
 international body, accreditation authority, conformity-assessment
-body, manufacturer, verifier, bearer, operator, or update actor —
-orthogonal to the node's structural kind. The class states the
+body, manufacturer, verifier, bearer, operator or update actor, and
+the class is orthogonal to the node's structural kind. The class states the
 node's role; the structural kind states its position.
 
 Which party class may sign which object class is fixed by the
@@ -270,14 +271,16 @@ latest admissible version governs; supersession is detectable.
 
 === Certified hierarchies
 
-Certification hierarchies in the style of CNML — root, issuing
-authority, test laboratory, manufacturer model, instance — are
+Certification hierarchies in the style of CNML, whose levels are
+root, issuing authority, test laboratory, manufacturer model and
+instance, are
 ingested as chains of scoped delegations, each link signed by its
 parent and carrying the four-layer scope (authority,
 profile-version, product-group, window) plus executable conditions.
 Calibration evidence in the style of a digital calibration
-certificate — device under test, measurand, result, GUM uncertainty,
-unit, interval — is signed by the issuing laboratory. The scope is
+certificate, which records the device under test, the measurand, the
+result, the GUM uncertainty, the unit and the interval, is signed by
+the issuing laboratory. The scope is
 checked at every link at use time: an act is admitted only when
 every link's scope admits it, and the refusing link is named. An
 out-of-scope delegation is thereby rejected when the evidence is
@@ -288,8 +291,9 @@ verified, not when the chain is filed.
 Recognition of a counterpart's objects is declared per object class
 under one of four modes: unilateral pinning under a declared
 acceptance policy; bilateral anchor exchange; club lists; and the
-master-list mesh. Recognition is class-scoped — a mode recognized
-for one object class does not admit objects of another class, and
+master-list mesh. Recognition is class-scoped, so that a mode
+recognized for one object class does not admit objects of another
+class, and
 out-of-class objects are refused with both the counterpart and the
 class named. Declared harmonization levels are machine-queryable
 per pair and per data class as the minimum of the two sides'

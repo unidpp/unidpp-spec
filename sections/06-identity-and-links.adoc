@@ -45,8 +45,8 @@ Informative implementation reference: `crates/model/src/identifier.rs`
 === Passport and profile identifiers
 
 Passport identifiers and profile identifiers shall be location-free
-slugs or URN forms, never resolver addresses (I14 — identities outlive
-their issuers and hosts):
+slugs or URN forms and never resolver addresses, in accordance with
+I14, under which identities outlive their issuers and hosts:
 
 * passport identifier: `urn:unidpp:passport:<slug>`;
 * profile identifier: `urn:unidpp:profile:<slug>`.
@@ -110,26 +110,27 @@ g) *Identity rotation (supersession).* An identity regime may rotate:
 
 h) *The old identity resolves and states its successor.* During the
  rotation window the superseded identity shall continue to resolve,
- and every non-dark response shall carry the successor statement — in
- the machine-readable form (linkset members or headers) and in the
- consumer-facing form (the migration notice on the rendered page).
+ and every non-dark response shall carry the successor statement in
+ the machine-readable form, which is linkset members or headers, and in
+ the consumer-facing form, which is the migration notice on the
+ rendered page.
  Rotation shall not remove entries; removal remains a revocation, a
  distinct act.
 
 i) *Absence after rotation is stated.* Once a superseded identity's
- entries are gone, resolution shall state the absence *with* the
- successor — a bare "not found" is permitted only where no rotation
- record exists, because silence is the failure mode rotation exists
- to prevent.
+ entries are gone, resolution shall state the absence together with the
+ successor, and a bare "not found" is permitted only where no rotation
+ record exists, because silence is the failure mode that rotation
+ exists to prevent.
 
 j) *Darkness outranks rotation.* A dark identity (6.7, I12) shall
  serve no rotation statement: darkness means no information, and
  byte-identical refusal holds regardless of any rotation record.
 
 k) *Same-subject multiplicity.* A physical thing may carry more than
- one concurrent passport under more than one scheme — jurisdictional
+ one concurrent passport under more than one scheme, because jurisdictional
  mandates, redundant-system resilience and rotation windows all
- require coexistence — and this shall be treated as the normal
+ require coexistence, and this condition shall be treated as the normal
  condition, never an anomaly to consolidate. The framework shall
  support an *attested same-subject correlation* between passports:
  a signed, dated relation naming its assertor, its evidence and its
@@ -158,8 +159,9 @@ model (a registered type definition), type version, configuration and
 instance, according to the following rules (source invariants 9 and 10
 of 5.11).
 
-a) A *type passport* (model level) holds type-approved facts:
- certifications, type tests, declared values — the type twin. The
+a) A *type passport* (model level) holds type-approved facts, which
+ are certifications, type tests and declared values, and it constitutes
+ the type twin. The
  type definition defines semantics for instance elements, fixing
  single-definition reuse.
 
@@ -219,8 +221,8 @@ following relationship classes.
 
 Every relationship record shall carry: the relationship type, the other
 passport on the edge, the direction (outgoing or incoming), the
-temporal interval, and — for installation — the binding structure
-(7.6). Interval closure shall be explicit (an uninstall or removal
+temporal interval and, for installation, the binding structure
+described in 7.6. Interval closure shall be explicit (an uninstall or removal
 event closes the interval), and activity at a time shall be evaluated
 by interval containment, with an open interval remaining active into
 the future.
@@ -270,7 +272,8 @@ f) *visibility* — the edge-visibility class with escrow arrangement and
 
 g) *Bidirectional parent knowledge shall be mandatory*: the parent's
  manifest lists children, and the child's event log records its
- installation interval (parent, slot, method) — for recall routing,
+ installation interval, which comprises parent, slot and method, for
+recall routing,
  scoped service access (the parent's repairer gets scoped rights over
  child data), ownership transfer (conveying child context) and
  end-of-life routing. Installation history is value-relevant
@@ -306,15 +309,16 @@ Informative implementation reference: `crates/model/src/link.rs`
 === Edge visibility and enumeration resistance
 
 The bidirectional parent knowledge of installation is a disclosure
-hazard: a child-to-parent edge reveals where a thing is — a household
-or a site. A traversable graph with entitled upstream observers is
+hazard: a child-to-parent edge reveals where a thing is, which may be
+a household or a site. A traversable graph with entitled upstream observers is
 surveillance infrastructure. The following rules shall therefore hold
 (I12).
 
 a) *Manufacturer posture.* The manufacturer is a definition-holder, not
  a state-observer. Post-sale visibility into instance state shall be
  owner-push (the owner self-discloses a serial for benefits) or
- authority-based (a regulator compels traversal) — never maker-pull.
+ authority-based (a regulator compels traversal), and it shall never be
+ maker-pull.
  The system's default channels are owner-push; maker-pull shall not
  be a framework feature.
 
@@ -336,8 +340,8 @@ c) *Proof of binding is not knowledge of parent.* The child shall
  consent.
 
 d) *Salt discipline.* Salts shall live only in the owner-side salt
- store or in an escrow envelope — never in the log and never in any
- serialization of it. Salted commitments shall be re-computable only
+ store or in an escrow envelope, and they shall never appear in the log
+ or in any serialization of it. Salted commitments shall be re-computable only
  under a disclosure ceremony.
 
 e) *Predicate-based recall.* The recall set shall never be enumerated
@@ -353,8 +357,8 @@ f) *Enumeration resistance as a system property.* Resolution shall be
  shall anchor commitments (hashes), never facts, so log operators
  cannot correlate edges; accumulator and blind-membership proofs
  shall give valid-standing checks without revealing which or where.
- No party — including any registry, resolver network or log operator
- — shall be able to enumerate the installed base of anything.
+ No party, including any registry, resolver network or log operator,
+ shall be able to enumerate the installed base of anything.
 
 g) *Dark identities.* Identities that never enter the global resolver
  shall be servable nationally only; confidential profiles (6.8) shall

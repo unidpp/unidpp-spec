@@ -23,8 +23,9 @@ shall be rejected (type agreement), and an event containing a status
 change that is not a legal transition shall be rejected at construction
 (8.4).
 
-The canonical body of an event — the byte string that commitments hash
-— shall be the deterministic serialization of the event value:
+The canonical body of an event, which is the byte string that
+commitments hash, shall be the deterministic serialization of the
+event value:
 struct fields in declaration order, sorted maps, integer and string
 scalars only.
 
@@ -37,9 +38,9 @@ Informative implementation reference: `crates/event/src/payload.rs`
 [[cl-event-taxonomy]]
 === Event class taxonomy
 
-The framework shall provide the sixteen lifecycle event classes — the
-issuance class plus the fifteen post-sale classes E1 to E15 — listed in
-Table 1, each with its default appending role.
+The framework shall provide the sixteen lifecycle event classes, which
+are the issuance class plus the fifteen post-sale classes E1 to E15,
+listed in Table 1, each with its default appending role.
 
 [[tbl-event-taxonomy]]
 .Table 1 — Lifecycle event classes (issuance and E1 to E15)
@@ -172,8 +173,8 @@ a) Suspension, invalidation and de-conformance proceed from `issued`;
 
 b) Transformation consumes inputs: the issuance and transformation
  machinery of Clause 9 transitions inputs to `consumed` or
- `transformed` — historical, still verifiable, still needed for
- as-of queries.
+ `transformed`, in which the inputs remain historical, still
+ verifiable and still needed for as-of queries.
 
 c) End-of-waste re-entry transitions `end-of-waste` to `issued`
  (9.4).

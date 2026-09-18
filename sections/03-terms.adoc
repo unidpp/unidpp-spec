@@ -55,10 +55,11 @@ reproducible.
 
 edge on a typed passport relationship whose existence and endpoints are
 concealed from all observers, so that a child-to-parent reference does
-not reveal where a thing is — a household or a site
+not reveal where a thing is, which may be a household or a site
 
-NOTE: Edge visibility classes — public, restricted (role-qualified),
-blind and escrowed — are declared on every relationship; the
+NOTE: The edge visibility classes, which are public, restricted
+(role-qualified), blind and escrowed, are declared on every
+relationship; the
 installation schema (concept dpp-0142) carries visibility as an edge
 class with escrow arrangement (concept dpp-0137) and audiences.
 
@@ -76,8 +77,8 @@ owner-push or authority-based, never maker-pull.
 [[dpp-0125]]
 === characteristic profile
 
-profile that attaches by predicate on digital twin facts — such as age,
-material content, heritage status or market status — rather than by
+profile that attaches by predicate on digital twin facts, such as age,
+material content, heritage status or market status, rather than by
 law-of-place or industry
 
 NOTE: Characteristic profiles split into regulatory-triggered profiles
@@ -148,8 +149,8 @@ minting fresh identifiers would orphan the installed base.
 
 system property by which the passport system is verifiable without
 being browsable: resolution is by identity only, traversal requires
-per-edge rights, and no party — including any registry, resolver
-network or log operator — can enumerate the installed base of anything
+per-edge rights, and no party, including any registry, resolver
+network or log operator, can enumerate the installed base of anything
 
 NOTE: Transparency logs anchor commitments (hashes), never facts, so
 log operators cannot correlate edges; accumulator and blind-membership
@@ -168,8 +169,8 @@ predicate-based recall (concept dpp-0140).
 
 edge visibility arrangement in which information concealed by a blind
 edge (concept dpp-0136) is deposited with a threshold trustee and
-released only through a disclosure ceremony — court, regulator or
-consent
+released only through a disclosure ceremony before a court, regulator
+or with consent
 
 NOTE: The installation schema records escrow as none or trustee, with
 declared audiences.
@@ -238,8 +239,9 @@ profile conceived as a calibrated measuring instrument placed on the
 digital twin, which selects and transforms without altering the
 observed scene
 
-NOTE: The mount — the profile interface on the neutral core — is the
-standardized element: any registered lens by any maker attaches to it.
+NOTE: The mount, which is the profile interface on the neutral core,
+is the standardized element, and any registered lens by any maker
+attaches to it.
 
 NOTE: A lens publishes its calibration (version and cited rules), its
 uncertainty and its decision rules; it is subject to pattern approval
@@ -274,8 +276,8 @@ testimonial by default and sensorial by exception.
 
 recall scheme in which the recall set is never enumerated centrally:
 the recall predicate is published, and each custodian evaluates it
-locally against their own holdings — including dark and defence
-holdings under national procedure — and acts
+locally against their own holdings, including dark and defence
+holdings under national procedure, and acts
 
 NOTE: The manufacturer receives aggregates or nothing; there is no
 traversal-push enumeration of the installed base.
@@ -294,7 +296,7 @@ construction of the recall set.
 registered, versioned object that binds a set of data points,
 transforms, cryptographic suites, trust requirements, access policies,
 presentation requirements and a trigger predicate to the neutral core
-passport, constraining and transforming — but never redefining — the
+passport, constraining and transforming but never redefining the
 single definition of each data point
 
 NOTE: Composition is three-axial: jurisdiction × sector ×
@@ -442,8 +444,8 @@ profile applies, evaluated against the facts of the digital twin rather
 than against who declares them
 
 NOTE: Characteristic profiles (concept dpp-0125) attach by predicate on
-twin facts — age, material content, heritage status, market status —
-rather than by law-of-place or industry.
+twin facts, which are age, material content, heritage status and
+market status, rather than by law-of-place or industry.
 
 NOTE: Predicate triggers include time predicates: an object becoming
 older than a given age is a clock-fired applicability event, handled by
@@ -461,8 +463,8 @@ concept rather than recorded separately.
 === truth mode
 
 declared per-data-element attribute of a profile stating which truth
-source the element requires — attest-sampled, self-committed, or both
-with a precedence rule
+source the element requires, which may be attest-sampled,
+self-committed, or both with a precedence rule
 
 NOTE: The passive twin (concept dpp-0132) supplies attest-sampled truth
 and the active twin (concept dpp-0133) supplies self-committed truth;

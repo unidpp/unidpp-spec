@@ -9,8 +9,8 @@ discipline. A tier 1 mapping is deterministic: it names a
 registered, versioned transform, and applying that transform to a
 source value yields the target value, the same output for the same
 input. A tier 2 mapping is a correspondence: it declares its scope
-and states its residual — what the correspondence does not cover —
-and asserts similarity, never transformability. A tier 3 record
+and states its residual, which is what the correspondence does not
+cover, and asserts similarity, never transformability. A tier 3 record
 asserts that NO mapping exists between the two items; the pair is
 recorded precisely so that no correspondence is ever inferred, and
 the two items remain distinct.
@@ -29,14 +29,14 @@ associatively, their transform references concatenated in order;
 tier 2 links propagate residuals, accumulating in order with scopes
 intersecting; a tier 3 edge in a path refuses the whole
 composition. Chains record every constituent mapping version, and
-chain length is capped by policy — an over-cap chain is refused at
-composition, stated.
+chain length is capped by policy, and an over-cap chain is refused
+at composition with the refusal stated.
 
 [[cl-semantics-units]]
 === Units, uncertainty and decision rules
 
-Measured values are stored in canonical units only — the unit under
-which their quantity kind is registered. A value offered in a
+Measured values are stored in canonical units only, which are the
+units under which their quantity kinds are registered. A value offered in a
 non-canonical unit is refused at intake with the registered
 conversion offered; the conversion, when applied, scales the value
 and its uncertainty alike. A derived value without GUM uncertainty
@@ -58,9 +58,8 @@ two rules, both correctly.
 Element values are localized per BCP 47 with full tags, script
 subtags included. Tags are validated for well-formedness: the
 language subtag is two or three letters; the second subtag, when
-alphabetic, is a four-letter script or a two-letter region. The
-defect of EN 18223 — a language restricted to a two-letter code,
-incapable of expressing a script — is refused. Retrieval falls back
+alphabetic, is a four-letter script or a two-letter region. The defect of EN 18223, in which a language is restricted to a
+two-letter code incapable of expressing a script, is refused. Retrieval falls back
 by prefix (a request for `zh` resolves a held `zh-Hans`) and states
 the fallback taken.
 
@@ -69,10 +68,9 @@ the fallback taken.
 
 Every registry item and profile exports a parseable,
 JSON-LD-shaped document carrying its stable identifier: a registry
-URI of the form register/item, optionally pinned to a version. The
-identifier resolves back — its shape parses to register, item and
-version — so a consumer holding only the export can re-address the
-registry. A foreign parser round-trips the export; malformed
+URI of the form register/item, optionally pinned to a version. The identifier resolves back, in that its shape parses to register,
+item and version, so that a consumer holding only the export can
+re-address the registry. A foreign parser round-trips the export; malformed
 identifiers are stated failures.
 
 [[cl-semantics-federation]]

@@ -4,8 +4,8 @@
 [[cl-discovery-roles]]
 === The operator role model
 
-Operators act under a role model of thirty roles in four families —
-issuance, lifecycle, verification, and infrastructure — each
+Operators act under a role model of thirty roles in four families, which are
+issuance, lifecycle, verification and infrastructure, each
 specified by a fixed rule row: what it may issue, which events it
 may append, what it may read, and what it may operate. The catalog
 is first-class data; conforming implementations consult it rather
@@ -31,11 +31,11 @@ holds no operational action.
 
 A new operator bootstraps from a seed bundle: the trust anchors to
 pin, the root service descriptors to seed, and the starting role
-credential — one verifiable unit. Onboarding is a ceremony: the
+credential, and the bundle constitutes one verifiable unit. Onboarding is a ceremony: the
 credential is checked against the role model and the tier
 requirement; the service application passes the listing gates,
-being predicates over its descriptor — jurisdiction, residency
-class, and a continuity pointer, the succession plan every service
+being predicates over its descriptor, which cover jurisdiction,
+residency class and a continuity pointer, the succession plan every service
 operator registers at admission. A gate refusal states the failed
 predicate; the ceremony ends with the service listed and queryable.
 
@@ -48,6 +48,6 @@ directions, each deployment serving the other's items, and no
 message of the protocol names a master. A registry-operator
 conformance contract governs admission: the 19135 item lifecycle,
 canonical item exchange, mirror serving of foreign items, and
-enumeration resistance on the public surface — each item failing,
+enumeration resistance on the public surface, each item failing,
 when violated, with the item named. A deployment that does not
 conform does not federate.

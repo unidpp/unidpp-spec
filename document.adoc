@@ -14,12 +14,13 @@
 == Introduction
 
 This document specifies the UniDPP framework for digital product
-passports: a neutral, jurisdiction-agnostic core model on which regional,
-sectoral and characteristic requirements operate as independently
-governed profiles. The framework is a projection architecture — the
-passport is a deterministic, registered and legally cited view of an
-event-sourced testimonial record (the governed digital twin), and the
-profile is a calibrated lens placed on that record.
+passports, which is a neutral, jurisdiction-agnostic core model on
+which regional, sectoral and characteristic requirements operate as
+independently governed profiles. The framework is a projection
+architecture, in which the passport is a deterministic, registered and
+legally cited view of an event-sourced testimonial record, which this
+document calls the governed digital twin, and the profile is a
+calibrated lens placed on that record.
 
 [NOTE]
 ====

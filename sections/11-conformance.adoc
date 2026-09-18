@@ -80,7 +80,7 @@ d) declare a minimum capability class consistent with the freshness
  subject shall be registered (6.5);
 
 e) declare freshness requirements per 6.6, dated applicability windows
- including retroactive flags (6.7), and — where applicable — the
+ including retroactive flags (6.7), and, where applicable, the
  confidential profile posture of 6.8;
 
 f) bind only registered transforms (9.6) that publish rounding,
@@ -124,7 +124,7 @@ An implementation claiming *Verifier* conformance shall:
 a) verify chain integrity and anchoring, and detect truncation and
  forks (8.3 d);
 
-b) produce graded verdicts — never booleans — carrying the reading
+b) produce graded verdicts, never booleans, carrying the reading
  answered, freshness verdict, the three readings, trust marker, and
  outcome with explicit degradation and failure causes (10.5, 11.4);
 
@@ -207,8 +207,8 @@ operational record itself: the backup sidecar with its per-member
 integrity values and consistency point, the drill report (restored
 members byte-identical, restored configuration validated), and the
 upgrade-rehearsal report (domain readings equal, journals
-byte-prefix compatible) — the artifacts <<cl-operations>> requires
-operators to produce and keep.
+byte-prefix compatible), which are the artifacts <<cl-operations>>
+requires operators to produce and keep.
 
 === Jurisdictional registry operator conformance class
 
@@ -253,24 +253,24 @@ class shall satisfy all requirements of the core class and, in
 addition, the operations and durability requirements of
 <<cl-operations>>:
 
-* **Deployment as data** — state by journal replay, configuration
-  externalized (<<cl-ops-data>>);
-* **Backup integrity** — per-member integrity values and a
+* *Deployment as data*: state is reconstructed by journal replay and
+  configuration is externalized (<<cl-ops-data>>);
+* *Backup integrity*: per-member integrity values and a
   consistency point (<<cl-ops-backup>>);
-* **Restore safety** — verify-before-unpack, explicit-overwrite-only
+* *Restore safety*: verify-before-unpack, explicit-overwrite-only
   with preservation, no tenant collision (<<cl-ops-restore>>);
-* **Append-only continuity** — the upgrade prefix property,
+* *Append-only continuity*: the upgrade prefix property,
   demonstrable by rehearsal (<<cl-ops-append-only>>);
-* **Proven restore** — recorded restore rehearsals (<<cl-ops-drill>>);
-* **Transfer artifacts** — integrity-verified bundles without
+* *Proven restore*: recorded restore rehearsals (<<cl-ops-drill>>);
+* *Transfer artifacts*: integrity-verified bundles without
   embedded secrets (<<cl-ops-bundle>>).
 
 === Federation classes (F1–F5)
 
 Federation conformance is claimed at one of five classes, aligned
 with the harmonization ladder. The classes measure federation
-level — what a system interoperates AS — not how much of any
-software suite it runs; a system running no UniDPP component may
+level, which states what a system interoperates as rather than how
+much of any software suite it runs; a system running no UniDPP component may
 claim F1 with its own exporter, and a system running several
 components may still interoperate only at F1.
 
@@ -287,8 +287,8 @@ components may still interoperate only at F1.
 |===
 
 The federation level between two systems is the minimum of their
-classes and of their policies — the composition law
-(<<cl-ops-grid>>) as a conformance statement: a policy cap cannot
+classes and of their policies, which is the composition law of
+<<cl-ops-grid>> stated as a conformance requirement: a policy cap cannot
 be lifted by any bridge, and no class above the minimum is
 effective for the pair.
 
@@ -299,15 +299,15 @@ public: F1 is the frozen-view verification command of the reference
 CLI, reproduced by the foreign harness air-gapped; F2 is the signed
 exchange vector (a verifier-signed request and a custodian-signed
 response in the S13-MESSAGE domain), which the foreign harness
-verifies and re-derives — the outcome from the governing policy —
+verifies and re-derives the outcome from the governing policy
 while issuing signed requests of its own; F3 is the mapping-chain
 vector (tier-1 hops, a tier-2 correspondence, a tier-3 divergence),
 which the foreign harness reproduces and applies under the tier
 discipline. All three classes are proven by an implementation the
 framework authors did not write. The reference CLI runs every
-class's claim test through one command — `unidpp conform <class>
+class's claim test through one command, `unidpp conform <class>
 <material>` (f1 a frozen view under the runner's own anchors; f2
 the signed exchange; f3 the mapping chain; f4 two views under one
-shared profile; f5 the family's golden-vector sweep) — so any third
+shared profile; f5 the family's golden-vector sweep), so that any third
 party can test any deployment, including its own, with one
 binary.

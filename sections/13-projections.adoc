@@ -27,8 +27,8 @@ Two requirements follow from the calculus:
 
 A digital twin conforms for the purpose of a lens by serving, for
 each input channel the lens declares, the channel's bytes under the
-segment state commitment that pins them — a commitment the carried
-spine proves (12.6). No other interface is required of the twin:
+segment state commitment that pins them, which is a commitment the
+carried spine proves (12.6). No other interface is required of the twin:
 neither an API, nor a format, nor a location. A lens applies to any
 twin that serves its declared channels; a twin that serves none of
 them is not conforming for that lens, stated, and the projection
@@ -48,12 +48,13 @@ under trusted time (Clause 12), is immutable.
 [[cl-frozen-view]]
 === Frozen views
 
-A **frozen view** is the self-describing publication object — the
+A **frozen view** is the self-describing publication object and the
 minimal interoperability unit between schemes (the F1 conformance
 class: publishes verifiable frozen views). It shall carry:
 
 a) the rendered payload;
-b) the five-axis descriptor (temporal: point-in-time — enforced);
+b) the five-axis descriptor (with the temporal axis enforcing
+ point-in-time);
 c) the lens metadata: the profile reference, the transform chain
    with per-step references and versions (registered, deterministic,
    cited), and the named input channels;
@@ -67,12 +68,12 @@ f) reader instructions: the verification checks, in order.
 Verification of a frozen view shall succeed using the view alone and
 the verifier's own anchors: the bundle verifies (12.7), every input
 matches its spine commitment, and every input is a declared lens
-channel — unexplained inputs are refused. **Re-execution**: the
+channel, so that unexplained inputs are refused. **Re-execution**: the
 verifier re-executes the lens over the committed inputs and shall
 obtain the issuer-side payload byte-identically; a mismatch is a
 failure, not a warning. The canonical encoding of the frozen view
 follows Annex B; its golden vectors are conformance material.
 
-A scheme that publishes verifiable frozen views — verifiable by any
-third party with its own anchors and no connection to the publisher
-— is F1 regardless of what software it runs.
+A scheme that publishes frozen views verifiable by any third party
+with its own anchors and no connection to the publisher is F1
+regardless of what software it runs.

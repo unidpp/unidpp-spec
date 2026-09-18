@@ -7,13 +7,14 @@
 A profile is a registered, versioned object that binds data points,
 transforms, cryptographic suites, trust requirements, access policies,
 presentation requirements and a trigger predicate to the neutral core
-passport, constraining and transforming — but never redefining — the
+passport, constraining and transforming but never redefining the
 single definition of each data point (I2, I10).
 
 Each profile is a projection function of the form
 `view(twinState, profile, actor)`, and the projection may transform and
-not merely select. The profile interface on the neutral core — the
-*mount* (seam S3) — shall be open: any registered lens by any maker
+not merely select. The profile interface on the neutral core, which
+is the *mount* of seam S3, shall be open: any registered lens by any
+maker
 shall attach to it, and no proprietary mount shall be load-bearing
 (I11). Profiles, their version supersessions and their trust bindings
 (which issuers may attest under them) shall be signed,
@@ -46,7 +47,8 @@ c) *characteristic* — predicate-attached (for example conflict
 A profile shall sit on at least one axis; a profile with no axis, no
 data points and no suites is not a profile and shall be rejected (6.3).
 Jurisdiction profiles bind the cryptographic suites, trust lists and —
-where law requires — in-country serving posture of their jurisdiction;
+where law requires the in-country serving posture of their
+ jurisdiction;
 sector and characteristic profiles compose with them by stacking
 filters (6.3). Characteristic profiles split into regulatory-triggered
 profiles and voluntary value profiles, and shall attach by trigger
@@ -93,7 +95,8 @@ verification time:
 * the profile binds no data points;
 * the profile binds no cryptographic suites;
 * the profile demands bounded freshness (fresh-within) while setting a
- minimum capability of S0 (silent) — an *unsatisfiable profile*
+ minimum capability of S0 (silent), which makes the profile
+ *unsatisfiable*
  (6.5);
 * the effective interval is malformed.
 
@@ -178,10 +181,10 @@ a) Profiles' freshness and verification requirements shall be
 b) The twin shall be testimonial by default and sensorial by exception
  (I8): device segments are one testimony class (self-testimony), not
  the foundation of the model. A silent S0 product shall be fully
- servable — type certification, economic-operator passport, custody
- testimonies, recycling events, Tier-A minimum — with zero device
- participation ever; any core assumption of device state is a design
- error.
+ servable through type certification, economic-operator passport and
+ custody testimonies, recycling events and the Tier-A minimum, with
+ zero device participation at any time, and any core assumption of
+ device state is a design error.
 
 c) For whole categories the most authoritative facts may live at a
  certification body; custodianship is profile-defined, and
@@ -215,7 +218,8 @@ g) The device shall be a cryptographic principal. A certificate
  per-segment operational slot keys shall sign the dynamic data, each
  slot key certified for its segment by the segment authority; and a
  segment attestation shall path-find to its authority through the
- chain device key — slot credential — authority. A slot key
+ chain that runs from the device key through the slot credential to
+ the authority. A slot key
  presented for a segment other than the one its credential covers
  shall be refused, the credential and the claimed segment named.
 
@@ -243,8 +247,8 @@ A profile may in addition declare a per-element freshness demand
 (`fresh_within`, an ISO 8601 duration) on a data point: the
 element's evidence shall be at least as fresh as the demand at the
 projection moment. A breached element-level demand degrades that
-element's reading with the demand and the observed age named — the
-profile-level window and the element-level demand are independent
+element's reading with the demand and the observed age named, and the
+profile-level window and the element-level demand remain independent
 requirements, and satisfying one never satisfies the other.
 
 [[cl-profile-lifecycle]]

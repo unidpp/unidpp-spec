@@ -52,8 +52,9 @@ b) *Dimension consistency.* Every carve-out shall be of the same
  dimension as the parent quantity (9.5); negative carve-outs shall be
  rejected.
 
-c) *Remainder.* The remainder — the parent's quantity minus the sum of
- carve-outs, expressed exactly in the parent's own unit — stays with
+c) *Remainder.* The remainder, which is the parent's quantity minus
+ the sum of carve-outs expressed exactly in the parent's own unit, stays
+ with
  the parent.
 
 d) *Consumption.* When the remainder is exactly zero, the parent
@@ -70,7 +71,7 @@ state hash of that passport at reference time), so that the new
 passport hash-links its sources (a merge topology over the DAG).
 
 a) Output quantities shall be *new measured facts* with provenance
- "computed by transformation event E" — never copies of input
+ "computed by transformation event E", and never as copies of input
  quantities.
 
 b) *Mass balance.* `in − out = loss`, where loss shall be
@@ -116,8 +117,9 @@ b) *Decompose* (E13) is the inverse transformation at end-of-life,
 c) The material state machine closes the loop: natural resource →
  extracted lot (batch passport plus extraction profile) →
  transformation chain → product → waste status → end-of-waste event
- → secondary raw material → re-entry — where the end-of-waste event
- either re-qualifies the SAME identity (see d) — no new passport) or,
+ to secondary raw material and to re-entry, where the end-of-waste
+ event either re-qualifies the SAME identity with no new passport, as
+ described in item d), or
  for a decomposed lot, issues derived material passports per b).
  Mass balance and taint propagate through the whole loop (cradle-to-
  cradle, not cradle-to-grave).
@@ -129,11 +131,12 @@ d) *Productness is a dated, per-regime predicate*, not a property of
  regime is the latest dated record, with the history preserved.
 
 e) The two re-entries into commerce shall be distinguished and shall
- never be conflated. *Same-identity re-entry* — end-of-waste under a
- regime whose criteria are satisfied — re-qualifies the same
+ never be conflated. *Same-identity re-entry*, which is end-of-waste
+ under a regime whose criteria are satisfied, re-qualifies the same
  identity: the predicate toggles, dated, and no new passport issues.
- *Derived-identity re-entry* — scrap, split or decomposition, where
- the material loses its identity — issues a new passport following
+ *Derived-identity re-entry*, which is scrap, split or decomposition,
+ where
+ the material loses its identity and issues a new passport following
  the derivation edge R2; the parent identity does not re-qualify.
 
 [[cl-transform-units]]
@@ -250,7 +253,8 @@ b) A rule shall carry a non-empty clause URN, and the URN shall
 c) A rule's arms are an ordered decision table, first match wins;
  the unconditional else arm, when present, shall be last. When no
  arm matches and no else arm exists, the outcome shall be the
- explicit label `unclassified` — never silent, never an error.
+ explicit label `unclassified`, and it shall never be silent or an
+ error.
 
 d) Evaluation shall be a pure function of the rule and its resolved
  inputs: exact-decimal arithmetic (floating-point is not
@@ -282,7 +286,7 @@ b) *Retroactivity.* The revocation reason determines retroactivity:
  prospective reasons (key compromise after a time, cessation,
  supersession) leave prior as-of verifications valid; retroactive
  reasons (`misissued`, `fraudulent issuance`, authority compromised
- during a window) void validity ab initio — time-stamping does not
+ during a window) void validity ab initio, and time-stamping does not
  protect them. Distrust declarations shall carry an explicit window
  [start, end]; passports inside the window are voided, outside it
  re-validated.

@@ -5,11 +5,10 @@
 [[annex-canonical-intro]]
 === Purpose
 
-Every signed or committed object in this framework — policy objects,
-segments and the commitment spine (<<cl-ops-grid>>), profiles
-(Clause 5), S13 messages and sovereign attestation statements
-(<<cl-s13>>) — is hashed or
-signed over CANONICAL BYTES. This annex states the encoding
+Every signed or committed object in this framework, which includes
+policy objects, segments and the commitment spine (<<cl-ops-grid>>),
+profiles (Clause 5), and S13 messages and sovereign attestation
+statements (<<cl-s13>>), is hashed or signed over CANONICAL BYTES. This annex states the encoding
 normatively so that an independent implementation can produce
 byte-identical forms and reproduce every digest exactly: the
 canonical encoding is the cross-implementation contract (the
@@ -27,7 +26,7 @@ encoding:
 
 * *Byte strings and text*: a 32-bit unsigned little-endian length
   prefix followed by the bytes (UTF-8 for text). No separators, no
-  padding, no escapes — the length prefix IS the framing.
+  padding and no escapes, because the length prefix is the framing.
 * *Integers*: fixed-width little-endian (16/32/64-bit as declared
   for the field).
 * *Digests*: the raw 32-byte SHA-256 output.
@@ -39,7 +38,7 @@ encoding:
   deduplicated, sorted in ascending byte order, and joined with the
   unit separator U+001F as ONE field, and two orderings of the same
   members shall produce identical canonical bytes.
-* *Structs*: fields in the object's declared order — that order is
+* *Structs*: fields in the object's declared order, which is
   normative and shall not be changed without a version change.
 
 The digest of an object is SHA-256 over its canonical bytes. Serde
@@ -59,8 +58,8 @@ signatures and hashes alike.
 ====
 A value derived in one domain shall not verify in another. In
 particular: a segment state commitment (Table B.1, row 1) replayed
-as a spine input — a sibling node hash, or a leaf-hash value
-presented as a commitment — shall fail proof verification; a
+as a spine input, whether a sibling node hash or a leaf-hash value
+presented as a commitment, shall fail proof verification; a
 signature produced in one signing domain shall not verify in
 another over any payload. Conforming implementations shall test
 cross-domain substitution and fail it loudly.
@@ -108,8 +107,8 @@ versioned fixture set (the reference implementation's
 annex: an implementation that reproduces the fixtures' digests
 exactly is conformant with B.2; one that does not is not. Fixtures
 are versioned with the framework and replayed in continuous
-integration, so a rule change without a fixture change — or the
-reverse — is a visible break, not a silent drift.
+integration, so that a rule change without a fixture change, or the
+reverse, is a visible break and not a silent drift.
 
 [[cl-cn-signed-payloads]]
 === Signed-object payloads (B.5)
