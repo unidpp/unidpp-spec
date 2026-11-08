@@ -154,6 +154,34 @@ Informative implementation reference: `crates/model/src/facts.rs`
 (`TwinFacts`, `FactValue`, `TriggerPredicate`).
 ====
 
+[[cl-fact-path]]
+=== The fact path
+
+The digital twin carries its testimonial facts in an open map: the
+keys are dotted fact paths, and the values are of one of the four
+canonical value kinds: string, decimal number, boolean, and list of
+strings. The value-kind set is closed and versioned with the core; an
+implementation shall not admit a fifth value kind through an encoding
+side door, and a value outside the four kinds shall fail to serialize
+rather than degrade silently.
+
+The open map is the system's extensibility surface for product
+features. A profile declares the fact paths it consumes (its data
+points); an instance may carry facts beyond every profile's
+declaration, and the map takes them as data. A new feature of a
+product class is therefore a fact path and, where it shall surface in
+views, a profile declaration — not a core change.
+
+The canonical encoding of the fact map shall follow Annex B, and the
+golden vectors of the conformance corpus pin its bytes.
+
+Admitting a fifth value kind is a coordinated core change: the core
+model, the canonical encoding of Annex B, the golden-vector corpus,
+and the language implementations shall move in one change, proposed
+and reviewed as such. An implementation-local value shape shall be
+carried as a string fact with a declared vocabulary until the core
+change lands.
+
 [[cl-profile-capability]]
 === Capability classes, truth modes and the twin axis
 

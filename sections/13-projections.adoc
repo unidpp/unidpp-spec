@@ -77,3 +77,18 @@ follows Annex B; its golden vectors are conformance material.
 A scheme that publishes frozen views verifiable by any third party
 with its own anchors and no connection to the publisher is F1
 regardless of what software it runs.
+
+[[cl-class-freeze]]
+=== Frozen views and class evolution
+
+A committed frozen view is immutable in its class reference as in
+everything else. An evolution of the referenced class — a new profile
+version, a changed lens manifest, a superseded transform, a remapped
+unit — shall not alter, silently invalidate, or re-render a frozen
+view already published under the earlier class state. Re-execution
+shall resolve the transform chain by the versions the view names, not
+by the registry's current state: where a named version has been
+superseded, verification continues against the named versions; where
+a named version has been withdrawn, the failure shall be stated as a
+resolution failure, never as a silent substitution of the successor.
+A class change never retcons an existing instance's committed views.
