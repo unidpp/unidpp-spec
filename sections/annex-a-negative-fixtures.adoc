@@ -46,3 +46,24 @@ six normative annex examples of <<en18223>> fail machine validation,
 while the profile adaptations (casing normalization, field-name
 mapping) that reconcile the EU profile family with the neutral core
 are exactly the profile mechanism of Clause 6 at work.
+
+[[annex-instance-negatives]]
+=== The instance-intake negative fixtures
+
+The negative fixtures of the instance intake are conformance
+material in the discipline of this annex. A conforming
+implementation shall refuse each of the following registrations, and
+shall state the refusal as this table describes.
+
+[[tbl-instance-negatives]]
+.Table A.2 — Instance-intake negative fixtures
+[cols="10,22,68",options="header"]
+|===
+| # | Fixture | Defect and required behaviour
+
+| IC1 | missing-required | The instance omits a fact that the descriptor declares required. The registration shall refuse and shall name the fact path and the descriptor's requirement.
+| IC2 | wrong-kind | The instance carries a fact at a declared path as a value of a kind other than the kind the descriptor assigns. The registration shall refuse and shall name the fact path and both kinds.
+| IC3 | out-of-vocabulary | The instance carries a value outside the vocabulary the descriptor declares for a string feature. The registration shall refuse and shall name the member and the declared vocabulary.
+| IC4 | unresolved-unit | The descriptor references a unit that no registered unit item names at the instant of registration. The registration shall refuse and shall name the unit reference.
+| IC5 | unknown-class | The instance names, as `instance_of`, an identifier that no registered class descriptor carries, or that another class carries. The registration shall refuse and shall name the class identifier.
+|===

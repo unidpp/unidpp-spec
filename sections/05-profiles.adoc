@@ -182,6 +182,85 @@ and reviewed as such. An implementation-local value shape shall be
 carried as a string fact with a declared vocabulary until the core
 change lands.
 
+[[cl-class-descriptor]]
+=== The class descriptor
+
+An author-defined passport class shall declare its machine-checkable
+shape as a registered, signed item of the class `class-descriptor`
+in a federated register governed per the registration clause of this
+section. The identifier of the descriptor item names the class, and
+the identifier of the descriptor shall be the value of its
+`class_id` declaration; a descriptor whose `class_id` does not name
+its own item shall be refused at registration.
+
+The descriptor shall declare the features of the class as an array
+of feature specifications. Each feature specification shall name a
+dotted fact path conforming to <<cl-fact-path>> and shall assign the
+feature one of the four canonical value kinds. A feature
+specification shall state whether the feature is required or
+optional. A feature specification for a string feature may declare a
+closed vocabulary, in which case the instances of the class shall
+draw the value of that feature from the declared members. A feature
+specification for a decimal feature may reference a registered unit.
+A vocabulary on a feature of another kind shall be refused at
+registration, and a unit reference on a feature of another kind
+shall be refused at registration. A fact path shall be declared at
+most once per descriptor.
+
+The descriptor shall declare the capability classes of
+<<cl-profile-capability>> that may carry the class, and shall
+declare the rule references the class relies on. The rule
+references are carried uninterpreted by this clause; the
+rule-expression language assigns them their deterministic reading.
+
+A class descriptor shall register only in its signed form, under the
+same signed-form discipline as a profile manifest: the manifest
+shall state its issuer class, its issuing node, and a signature slot
+carrying a signature value. The cryptographic reading of that
+signature is the trust service's responsibility, as it is for
+profiles.
+
+A register shall surface the registered class descriptors beside its
+service descriptors, so that a verifier meeting an instance of an
+unknown class can resolve the machine-checkable descriptor of that
+class.
+
+[[cl-instance-intake]]
+=== The instance intake
+
+An instance of an author-defined class shall register as an item of
+the class `instance` whose manifest states the class it instantiates
+as `instance_of`, naming the identifier of a registered class
+descriptor, and whose features are the twin-fact map of
+<<cl-fact-path>>. Registration shall resolve the named descriptor
+point-in-time, as every registry read resolves, and shall validate
+the instance against it.
+
+The registration shall refuse an instance whose manifest omits a
+fact that the descriptor declares required, and the refusal shall
+name the failing fact path. The registration shall refuse an
+instance where a fact declared in the descriptor presents as a value
+kind other than the kind the descriptor assigns to that fact path,
+and the refusal shall name the fact path and both kinds. The
+registration shall refuse an instance whose value for a vocabulary-
+declared feature lies outside the declared members, and the refusal
+shall name the member and the declared vocabulary. The registration
+shall refuse an instance whose descriptor references a unit that no
+registered unit item names at the instant of registration, and the
+refusal shall name the unit reference. The registration shall refuse
+an instance whose `instance_of` names no registered class
+descriptor, or names an item registered in another class, and the
+refusal shall name the class identifier.
+
+Facts outside the descriptor's declarations are the open map of
+<<cl-fact-path>>: registration shall take them as data and shall
+carry them without validation. The registration shall not reject an
+instance for carrying facts that the descriptor does not declare.
+
+A class change shall never retcon an instance whose views are
+committed: the frozen-view doctrine of the projection clause applies
+to instances of author-defined classes as it applies to profiles.
+
 [[cl-profile-capability]]
 === Capability classes, truth modes and the twin axis
 
