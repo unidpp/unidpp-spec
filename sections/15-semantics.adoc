@@ -15,11 +15,19 @@ asserts that NO mapping exists between the two items; the pair is
 recorded precisely so that no correspondence is ever inferred, and
 the two items remain distinct.
 
-Intake and query honour the tiers: a tier 3 record renders as two
+A cross-register mapping registers in one of two forms: the
+relation form, which names its source, its target and one of the
+harmonization relations; and the tier form, which names its source,
+its target, its own version and its tiered kind, whose canonical
+encoding the conformance corpus pins. Intake and query honour the
+tiers, and intake honours the tier form's duties: a tier 3 record
+states why no correspondence is asserted and renders as two
 distinct items with no correspondence; a tier 2 correspondence
-carries its scope and residual verbatim and is refused outside its
-scope; a tier 1 mapping applies its registered transform
-deterministically.
+declares its scope, states its residual verbatim, and names its
+attester, and is refused outside its scope; a tier 1 mapping names
+its registered, versioned transform and applies it
+deterministically. Both ends of a registered mapping shall resolve
+to registered items, and the refusal shall name the failing field.
 
 [[cl-semantics-composition]]
 === Mapping composition
