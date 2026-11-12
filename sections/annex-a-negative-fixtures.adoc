@@ -67,3 +67,24 @@ shall state the refusal as this table describes.
 | IC4 | unresolved-unit | The descriptor references a unit that no registered unit item names at the instant of registration. The registration shall refuse and shall name the unit reference.
 | IC5 | unknown-class | The instance names, as `instance_of`, an identifier that no registered class descriptor carries, or that another class carries. The registration shall refuse and shall name the class identifier.
 |===
+
+[[annex-rule-negatives]]
+=== The rule-expression negative fixtures
+
+The negative fixtures of the rule-expression reading are conformance
+material in the discipline of this annex. A conforming
+implementation shall refuse each of the following registrations, and
+shall state the refusal as this table describes.
+
+[[tbl-rule-negatives]]
+.Table A.3 — Rule-expression negative fixtures
+[cols="10,22,68",options="header"]
+|===
+| # | Fixture | Defect and required behaviour
+
+| RC1 | unparseable-expression | A rule declaration whose expression the grammar does not accept. The descriptor registration shall refuse and shall name the parse failure and its position.
+| RC2 | dangling-reference | A rule reference naming no rule the descriptor declares. The descriptor registration shall refuse and shall name the reference.
+| RC3 | undeclared-path | A rule expression naming a fact path the descriptor does not declare. The descriptor registration shall refuse and shall name the path.
+| RC4 | kind-conflict | A rule expression pitting a literal against a feature of another kind, or ordering a non-decimal feature. The descriptor registration shall refuse and shall name the path and both kinds.
+| RC5 | unsatisfied-rule | An instance for which a referenced rule evaluates false. The instance registration shall refuse and shall name the rule's identifier and its expression.
+|===

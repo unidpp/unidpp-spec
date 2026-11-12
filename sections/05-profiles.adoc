@@ -209,9 +209,10 @@ most once per descriptor.
 
 The descriptor shall declare the capability classes of
 <<cl-profile-capability>> that may carry the class, and shall
-declare the rule references the class relies on. The rule
-references are carried uninterpreted by this clause; the
-rule-expression language assigns them their deterministic reading.
+declare the rule references the class relies on. Each rule
+reference shall resolve to a rule the descriptor declares under the
+rule-expression clause of this section; a reference that names no
+declared rule shall be refused at registration.
 
 A class descriptor shall register only in its signed form, under the
 same signed-form discipline as a profile manifest: the manifest
@@ -260,6 +261,45 @@ instance for carrying facts that the descriptor does not declare.
 A class change shall never retcon an instance whose views are
 committed: the frozen-view doctrine of the projection clause applies
 to instances of author-defined classes as it applies to profiles.
+
+[[cl-rule-expressions]]
+=== The rule-expression language
+
+The rule references of <<cl-class-descriptor>> take their
+deterministic reading through a rule expression. A rule is a boolean
+expression over the instance's twin-fact map: comparisons of a fact
+path against a literal, membership tests of a fact path against a
+bracketed list of literals, and the three connectives. The language
+shall parse by a recursive-descent grammar with fixed precedence —
+or binds loosest, and binds tighter, not binds tightest — and shall
+be evaluated with fixed semantics, so that the same expression over
+the same facts reads the same in every implementation.
+
+The comparison operators are equality, inequality and the four
+orderings. The four ordering operators shall compare decimal facts
+against number literals only. Equality and inequality shall compare
+a string fact against a string literal and a boolean fact against
+the literals for true and false. A membership test shall read a
+string fact among string members or a decimal fact among number
+members.
+
+The evaluation shall be total. A fact absent at the compared path
+shall make the comparison false, and not an error: a rule that
+requires a fact shall state that requirement through the
+descriptor's feature declaration. A fact of a kind other than the
+literal's kind shall compare as false.
+
+The descriptor intake shall validate every declared rule expression:
+each shall parse; each shall name only fact paths the descriptor
+declares; each shall compare literals only against the kinds those
+features declare. A rule declaration that fails any of these duties
+shall be refused at registration, with the failing path named.
+
+The instance intake shall evaluate every referenced rule over the
+instance's facts, after the shape validation of the instance-intake
+clause. The registration shall refuse an instance for which a
+referenced rule evaluates false, and the refusal shall name the
+failing rule's identifier and its expression.
 
 [[cl-profile-capability]]
 === Capability classes, truth modes and the twin axis
